@@ -8,13 +8,26 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mustafasabiterol.com/">
 <meta property="og:title" content="Mustafa Sabit Erol · Bilgisayar Mühendisi">
-<meta property="og:description" content="Otonom sistemler, SLAM, LiDAR, simülasyon ve oyun geliştirme. Autonomous systems, SLAM, LiDAR, simulation and game development.">
+<meta property="og:description" content="ROS 2 ile görsel SLAM, LiDAR, simülasyon ve Unity ile mobil oyun geliştirme. Visual SLAM, LiDAR, simulation and Unity game development.">
 <meta property="og:image" content="https://mustafasabiterol.com/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Mustafa Sabit Erol">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:title" content="Mustafa Sabit Erol · Bilgisayar Mühendisi">
+<meta name="twitter:description" content="Otonom sistemler, SLAM, LiDAR, simülasyon ve oyun geliştirme.">
+<meta name="twitter:image" content="https://mustafasabiterol.com/img/og.jpg">
+<meta name="author" content="Mustafa Sabit Erol">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Mustafa Sabit Erol","url":"https://mustafasabiterol.com/","image":"https://mustafasabiterol.com/img/og.jpg","jobTitle":"Computer Engineer","email":"mailto:mstfsbt.erol@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Konya","addressCountry":"TR"},"alumniOf":{"@type":"CollegeOrUniversity","name":"KTO Karatay Üniversitesi"},"knowsAbout":["ROS 2","Visual SLAM","LiDAR","Webots","Unity","C#","C++","Embedded systems","ESP32"],"knowsLanguage":["tr","en"],"sameAs":["https://www.linkedin.com/in/mustafa-sabit-erol","https://github.com/XankaiSofestai"]}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23050608%27/%3E%3Cpath d=%27M16 4 28 16 16 28 4 16Z%27 fill=%27none%27 stroke=%27%2300D9FF%27 stroke-width=%272.5%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%273.5%27 fill=%27%2300D9FF%27/%3E%3C/svg%3E">
-<title>Mustafa Sabit Erol</title>
+<title>Mustafa Sabit Erol · Bilgisayar Mühendisi | Otonom Sistemler, SLAM, Oyun Geliştirme</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Mustafa Sabit Erol: Computer Engineer. Autonomous systems, SLAM, LiDAR, simulation and game development.">
+<meta name="description" content="Mustafa Sabit Erol, Bilgisayar Mühendisi: ROS 2 ile görsel SLAM, LiDAR, simülasyon ve Unity ile mobil oyun geliştirme. Computer Engineer: visual SLAM on ROS 2, LiDAR, simulation and Unity game development.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap">
@@ -22,7 +35,7 @@
 /* Layout: research-facility HUD. Full-bleed LiDAR scene behind giant expanded type, then editorial sections on a 1240px column with hairline grids. Single dark theme by design. */
 :root{
   --bg:#050608; --navy:#080E18; --panel:#0A111D; --line:rgba(140,190,230,.12); --line-2:rgba(140,190,230,.22);
-  --fg:#F2F6FA; --muted:#7F8DA0; --dim:#4A5668;
+  --fg:#F2F6FA; --muted:#8C99AB; --dim:#66758A;
   --cyan:#00D9FF; --blue:#176BFF; --violet:#7A6BFF; --ok:#3DE0A8;
   --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
   --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -58,7 +71,18 @@ a{color:inherit}
 .links a:hover{color:var(--fg)}
 .tg{font:500 11px var(--f-mono);letter-spacing:.14em;background:transparent;color:var(--fg);border:1px solid var(--line-2);padding:8px 12px;cursor:pointer}
 .tg:hover{border-color:var(--cyan);color:var(--cyan)}
-@media (max-width:860px){.links{display:none}.tg{margin-left:auto}}
+.burger{display:none;width:40px;height:34px;padding:0;position:relative}
+.burger i{position:absolute;left:11px;right:11px;height:1px;background:currentColor;transition:transform .3s,top .3s}
+.burger i:first-child{top:13px}.burger i:last-child{top:20px}
+.burger[aria-expanded=true] i:first-child{top:16px;transform:rotate(45deg)}.burger[aria-expanded=true] i:last-child{top:16px;transform:rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:49;background:rgba(5,6,8,.96);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);display:grid;align-content:center;gap:6px;padding:80px 28px 40px}
+.mnav[hidden]{display:none}
+.mnav a{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;font-family:var(--f-display);font-stretch:120%;font-weight:800;font-size:clamp(28px,9vw,44px);text-transform:uppercase;letter-spacing:-.02em;animation:pop .45s cubic-bezier(.2,.8,.2,1) both}
+.mnav a:nth-child(2){animation-delay:.04s}.mnav a:nth-child(3){animation-delay:.08s}.mnav a:nth-child(4){animation-delay:.12s}.mnav a:nth-child(5){animation-delay:.16s}
+.mnav a b{font:400 12px var(--f-mono);color:var(--cyan);letter-spacing:.1em}
+.skipl{position:fixed;left:12px;top:-60px;z-index:300;background:var(--cyan);color:var(--bg);padding:10px 14px;font:600 12px var(--f-mono);text-decoration:none;transition:top .2s}
+.skipl:focus{top:12px}
+@media (max-width:860px){.links{display:none}.tg{margin-left:auto}.burger{display:block;margin-left:0}.nav .wrap{gap:10px}}
 
 .hero{position:relative;min-height:min(100svh,980px);display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}
 #scene{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
@@ -90,7 +114,7 @@ h1 .ln:nth-child(2)>span{animation-delay:.12s}
 .hud canvas{width:118px;height:118px;display:block;grid-row:span 4}
 .hud div{font:10px var(--f-mono);color:var(--muted);letter-spacing:.12em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .hud div b{color:var(--fg);font-weight:400;display:block;font-size:13px;letter-spacing:.04em}
-.scroll{position:absolute;left:50%;bottom:18px;z-index:3;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll{position:absolute;right:max(20px,3vw);bottom:18px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px}
 .scroll i{width:1px;height:40px;background:linear-gradient(var(--cyan),transparent);animation:drip 2s infinite;transform-origin:top}
 @keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 .tags{position:absolute;inset:0;z-index:2;pointer-events:none}
@@ -282,6 +306,29 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
   linear-gradient(var(--cyan),var(--cyan)) 100% 100%/18px 1px,linear-gradient(var(--cyan),var(--cyan)) 100% 100%/1px 18px;background-repeat:no-repeat}
 .pv:hover .hudc{opacity:1;inset:18px}
 .scr{color:var(--cyan)}
+
+/* ---------- interactive layer: hero hint, terminal, game ---------- */
+.hero{touch-action:pan-y}
+.hero.drag{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.h-sub .hint{margin:22px 0 0;font-size:11px;line-height:1.6;letter-spacing:.14em;max-width:none;display:flex;gap:10px 18px;flex-wrap:wrap;align-items:center;color:var(--muted);transition:opacity .6s}
+.hint i{width:7px;height:7px;border:1px solid var(--cyan);transform:rotate(45deg);display:inline-block;margin-right:8px;animation:blink 1.6s infinite}
+.hint.used{opacity:.35}
+.hint .tch{display:none}
+@media (hover:none){.hint .ms{display:none}.hint .tch{display:inline}}
+.tbtn{position:fixed;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:45;font:500 12px var(--f-mono);letter-spacing:.08em;background:rgba(5,6,8,.8);color:var(--cyan);border:1px solid var(--line-2);padding:9px 11px;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transition:opacity .4s,border-color .2s}
+.tbtn.on{opacity:1}.tbtn:hover{border-color:var(--cyan)}
+#term{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:120;width:min(720px,calc(100vw - 24px));background:rgba(6,10,18,.96);border:1px solid var(--line-2);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(0,217,255,.08);font:13px/1.6 var(--f-mono);animation:pop .3s cubic-bezier(.2,.8,.2,1)}
+#term[hidden]{display:none}
+#term .tb{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);color:var(--muted);font-size:11px;letter-spacing:.14em}
+#term .tb button{all:unset;cursor:pointer;color:var(--muted);padding:2px 6px}#term .tb button:hover{color:var(--cyan)}
+#termOut{max-height:min(46svh,340px);overflow-y:auto;padding:12px 14px 4px;white-space:pre-wrap;word-break:break-word;color:#B8C3CF}
+#termOut .c{color:var(--fg)}#termOut .c::before{content:"› ";color:var(--cyan)}#termOut .k{color:var(--cyan)}#termOut .e{color:#ff8a7a}
+#term form{display:flex;gap:8px;align-items:center;padding:8px 14px 12px}
+#term form span{color:var(--cyan)}
+#termIn{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--fg);font:inherit;font-size:16px}
+#gdlg{max-width:min(860px,calc(100vw - 24px))}
+#game{display:block;width:100%;height:auto;max-height:calc(100svh - 230px);object-fit:contain;background:var(--bg);touch-action:none;cursor:crosshair;border-bottom:1px solid var(--line)}
+#gdlg .dlg-body{padding:18px 22px 22px;gap:8px}#gdlg p{margin:0;color:var(--muted);font-size:14px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media (prefers-reduced-motion:reduce){#boot{display:none}.pv img{transform:none!important}}
 </style>
@@ -311,6 +358,14 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
 </nav>
 <div class="cur" aria-hidden="true"></div><div class="cur-r" aria-hidden="true"></div>
 
+<a class="skipl" href="#about"><span lang="tr">İçeriğe geç</span><span lang="en">Skip to content</span></a>
+<nav class="mnav" id="mnav" aria-label="Mobil menü / Mobile menu" hidden>
+  <a href="#about"><b>01</b><span lang="tr">Hakkımda</span><span lang="en">About</span></a>
+  <a href="#expertise"><b>02</b><span lang="tr">Uzmanlık</span><span lang="en">Expertise</span></a>
+  <a href="#work"><b>03</b><span lang="tr">Projeler</span><span lang="en">Work</span></a>
+  <a href="#journey"><b>04</b><span lang="tr">Yolculuk</span><span lang="en">Journey</span></a>
+  <a href="#contact"><b>05</b><span lang="tr">İletişim</span><span lang="en">Contact</span></a>
+</nav>
 <header class="nav gut" id="nav">
   <div class="wrap">
     <a class="brand" href="#top"><i></i>M · S · EROL</a>
@@ -321,7 +376,8 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
       <a href="#journey"><span lang="tr">Yolculuk</span><span lang="en">Journey</span></a>
       <a href="#contact"><span lang="tr">İletişim</span><span lang="en">Contact</span></a>
     </nav>
-    <button class="tg" id="langBtn" type="button" aria-label="Language">EN</button>
+    <button class="tg" id="langBtn" type="button" aria-label="Dil / Language">EN</button>
+    <button class="tg burger" id="menuBtn" type="button" aria-label="Menü / Menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i></button>
   </div>
 </header>
 
@@ -350,9 +406,10 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
           <a class="btn mag" href="cv/Mustafa_Sabit_Erol_CV_TR.pdf" target="_blank" rel="noopener" lang="tr">CV · PDF</a>
           <a class="btn mag" href="cv/Mustafa_Sabit_Erol_CV_EN.pdf" target="_blank" rel="noopener" lang="en">CV · PDF</a>
         </div>
+        <p class="hint mono" id="hint" aria-hidden="true"><span><i></i><span class="ms"><span lang="tr">Sürükle: sahneyi döndür</span><span lang="en">Drag: rotate the scene</span></span><span class="tch"><span lang="tr">Yana kaydır: sahneyi döndür</span><span lang="en">Swipe sideways: rotate</span></span></span><span><i></i><span class="ms"><span lang="tr">Tıkla: LiDAR taraması gönder</span><span lang="en">Click: fire a LiDAR scan</span></span><span class="tch"><span lang="tr">Dokun: LiDAR taraması gönder</span><span lang="en">Tap: fire a LiDAR scan</span></span></span></p>
       </div>
       <div class="hud">
-        <canvas id="adi" width="236" height="236"></canvas>
+        <canvas id="adi" role="img" aria-label="Yapay ufuk / Attitude indicator" width="236" height="236"></canvas>
         <div><span lang="tr">YATIŞ</span><span lang="en">ROLL</span><b id="rRoll">+00.0°</b></div>
         <div><span lang="tr">YUNUSLAMA</span><span lang="en">PITCH</span><b id="rPitch">+00.0°</b></div>
         <div><span lang="tr">ROTA</span><span lang="en">HDG</span><b id="rHdg">000°</b></div>
@@ -374,7 +431,7 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
         <p class="lead" lang="en">I care about connecting software to the physical world: turning what a camera sees into a map, what a sensor reads into a decision, and a simulation into <em>a system that works in the field</em>.</p>
       </div>
       <div class="side rv">
-        <div class="idcard"><img src="img/profil.jpg" alt="Mustafa Sabit Erol" width="92" height="92"><div><span class="mono"><span lang="tr">PERSONEL · BMÜ-26</span><span lang="en">CREW · CMPE-26</span></span><b>Mustafa Sabit Erol</b><span class="mono">Konya · Ankara · Niğde</span></div></div>
+        <div class="idcard"><img src="img/profil.webp" alt="Mustafa Sabit Erol" width="92" height="92" decoding="async"><div><span class="mono"><span lang="tr">PERSONEL · BMÜ-26</span><span lang="en">CREW · CMPE-26</span></span><b>Mustafa Sabit Erol</b><span class="mono">Konya · Ankara · Niğde</span></div></div>
         <p lang="tr">KTO Karatay Üniversitesi Bilgisayar Mühendisliği'nden 2026'da onur öğrencisi olarak mezun oldum. SIMSOFT'ta iki kameralı görsel SLAM, AIMSOFT'ta metasezgisel optimizasyon üzerinde çalıştım; TEKNOFEST Savaşan İHA takımında mekanik tasarımda yer aldım.</p>
         <p lang="en">I graduated in Computer Engineering from KTO Karatay University in 2026 as an honor student. I worked on dual-camera visual SLAM at SIMSOFT and metaheuristic optimization at AIMSOFT, and did mechanical design for a TEKNOFEST fighter-UAV team.</p>
       </div>
@@ -392,8 +449,8 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
   <div class="wrap">
     <div class="sh"><span class="mono">02 / <span lang="tr">Uzmanlık</span><span lang="en">Expertise</span></span><h2 lang="tr">Yedi<br>disiplin<span class="dot">.</span></h2><h2 lang="en">SEVEN<br>DISCIPLINES<span class="dot">.</span></h2></div>
     <div class="exp">
-      <ol id="expList" role="tablist"></ol>
-      <div class="panel" role="tabpanel">
+      <ol id="expList" role="tablist" aria-orientation="vertical"></ol>
+      <div class="panel" role="tabpanel" id="expPanel" aria-live="polite">
         <div class="viz" id="expViz"></div>
         <div class="body">
           <span class="mono cy" id="expNum"></span>
@@ -457,6 +514,22 @@ footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;paddin
     <div class="cta" id="dlgCta" style="margin:0"></div>
   </div>
 </dialog>
+<dialog id="gdlg" aria-labelledby="gTitle">
+  <button class="tg dlg-x" id="gX" type="button" aria-label="Kapat / Close"><span lang="tr">KAPAT ✕</span><span lang="en">CLOSE ✕</span></button>
+  <canvas id="game" width="800" height="500" tabindex="0" aria-label="BrickRift demo"></canvas>
+  <div class="dlg-body">
+    <span class="mono cy">BRICKRIFT · <span lang="tr">TARAYICI DEMOSU</span><span lang="en">BROWSER DEMO</span></span>
+    <h3 id="gTitle"><span lang="tr">Falso fiziğini dene</span><span lang="en">Try the spin physics</span></h3>
+    <p lang="tr">Raketi yana doğru hızlıca çekerek vurursan topa falso verirsin ve top havada kavis çizer. Raketi yukarı iterek vurursan smaç olur. Bu, oyunun fikrini gösteren basitleştirilmiş bir tarayıcı demosu; asıl oyun Unity ile, 120 Hz özel fizik motoruyla çalışıyor.</p>
+    <p lang="en">Hit while swiping the paddle sideways to put spin on the ball and watch it curve. Push the paddle up into the ball to smash. This is a simplified browser demo of the idea; the real game runs in Unity on a custom 120 Hz physics engine.</p>
+  </div>
+</dialog>
+<button class="tbtn" id="termBtn" type="button" aria-label="Terminal">&gt;_</button>
+<div id="term" role="dialog" aria-label="Terminal" hidden>
+  <div class="tb"><span>MSE-OS · TERMINAL</span><button type="button" id="termX" aria-label="Kapat / Close">✕</button></div>
+  <div id="termOut" aria-live="polite"></div>
+  <form id="termForm" autocomplete="off"><span>›</span><input id="termIn" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Komut / Command"></form>
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -546,23 +619,23 @@ const EXP=[
 const PROJ=[
  {cat:{tr:'Otonom Robotik & SLAM · SIMSOFT',en:'Autonomous Robotics & SLAM · SIMSOFT'},n:{tr:'İki Kameralı Görsel SLAM',en:'Dual-Camera Visual SLAM'},
   d:{tr:'Ubuntu üzerinde ROS 2 ortamı kurup ekiple birlikte stereo görsel SLAM ile ortam haritalama ve konumlandırma.',en:'A ROS 2 environment on Ubuntu for mapping and localization with stereo visual SLAM, built with the team.'},
-  ill:'slam',gen:'img/gen_slam.jpg',c:['ROS 2','ORB-SLAM2','RTAB-Map',{tr:'Stereo görü',en:'Stereo vision'}],
+  ill:'slam',gen:'img/gen_slam.webp',c:['ROS 2','ORB-SLAM2','RTAB-Map',{tr:'Stereo görü',en:'Stereo vision'}],
   b:{tr:['Satranç tahtası deseniyle kamera kalibrasyonu ve iki kameranın senkronizasyonu','3B nokta bulutu haritalar','ORB-SLAM2 ve RTAB-Map işlem hatlarının ROS düğüm/konu düzeyinde analizi','Ekip için teknik dokümantasyon'],en:['Checkerboard calibration and dual-camera synchronization','3D point cloud maps','Node/topic-level analysis of ORB-SLAM2 and RTAB-Map pipelines','Technical documentation for the team']}},
  {cat:{tr:'Savunma Simülasyon Mühendisliği',en:'Defense Simulation Engineering'},n:{tr:'Otonom Araç & İHA Sistemleri',en:'Autonomous Vehicle & UAV Systems'},
   d:{tr:'Webots ve ROS 2 ile otonom araç simülasyonu ve LiDAR tabanlı engel algılama; TEKNOFEST Savaşan İHA takımında mekanik tasarım.',en:'Autonomous vehicle simulation and LiDAR obstacle detection with Webots and ROS 2; mechanical design for a TEKNOFEST fighter-UAV team.'},
-  ill:'sim',gen:'img/gen_sim.jpg',c:['Webots','ROS 2','LiDAR',{tr:'İHA',en:'UAV'}],
+  ill:'sim',gen:'img/gen_sim.webp',c:['Webots','ROS 2','LiDAR',{tr:'İHA',en:'UAV'}],
   b:{tr:['Webots ortamında araç simülasyonu, hareket ve çevre algılama testleri','LiDAR verisinin görselleştirilmesi, engel algılamanın prototip öncesi doğrulanması','TEKNOFEST Savaşan İHA, Takım Bangu: SİHA mekanik tasarımı, KTR aşaması geçildi'],en:['Vehicle simulation in Webots, motion and perception tests','LiDAR visualization and pre-prototype obstacle detection validation','TEKNOFEST Fighter UAV, Team Bangu: mechanical design, passed the CDR stage']}},
  {cat:{tr:'Oyun Geliştirme · Bitirme Projesi · Google Play\'de yayında',en:'Game Development · Graduation Project · Live on Google Play'},n:{tr:'DuelKeep',en:'DuelKeep'},
   d:{tr:'Piksel sanatlı, hızlı tempolu mobil aksiyon oyunu: gerçek rakiplerle bire bir çevrim içi düello, beceriye dayalı ligler ve iskelet ordularıyla dolu bir Raid haritası. Türkçe ve İngilizce olarak Google Play\'de yayında.',en:'A fast-paced pixel-art mobile action game: real-time 1v1 online duels, skill-based leagues and a large Raid map full of skeleton armies. Live on Google Play in Turkish and English.'},
-  img:'img/duelkeep_key.jpg',key:1,store:'https://play.google.com/store/apps/details?id=com.erolstudio.duelkeep',gal:[['img/duelkeep_key.jpg','key'],['img/dk_real1.jpg','real'],['img/dk_real2.jpg','real'],['img/dk_real3.jpg','real'],['img/dk_real4.jpg','real'],['img/dk_store1.jpg','key','tr'],['img/dk_store2.jpg','key','tr']],c:['Unity 6','C#','Photon Fusion 2','Unity Gaming Services'],k:[['17→60',{tr:'FPS · Raid modu, cihazda',en:'FPS · Raid, on device'}],[{tr:'9,8→0,6',en:'9.8→0.6'},{tr:'% · derinlik sıralama hatası',en:'% · depth-sorting errors'}],['369',{tr:'collider köprüsü',en:'collider bridges'}]],
+  img:'img/duelkeep_key.webp',key:1,store:'https://play.google.com/store/apps/details?id=com.erolstudio.duelkeep',gal:[['img/duelkeep_key.webp','key'],['img/dk_real1.webp','real'],['img/dk_real2.webp','real'],['img/dk_real3.webp','real'],['img/dk_real4.webp','real'],['img/dk_store1.webp','key','tr'],['img/dk_store2.webp','key','tr']],c:['Unity 6','C#','Photon Fusion 2','Unity Gaming Services'],k:[['17→60',{tr:'FPS · Raid modu, cihazda',en:'FPS · Raid, on device'}],[{tr:'9,8→0,6',en:'9.8→0.6'},{tr:'% · derinlik sıralama hatası',en:'% · depth-sorting errors'}],['369',{tr:'collider köprüsü',en:'collider bridges'}]],
   b:{tr:['Photon Fusion 2 ile sunucu otoriteli çevrim içi 1v1; eşleştirme sürüme göre ayrılıyor','Unity Gaming Services arka ucu (Authentication, Cloud Save, Leaderboards, Cloud Code); lig puanı sunucu tarafında makullük denetiminden geçiyor','Karakter, ağaç, duvar ve mermi için tek bir izometrik derinlik kuralı; Raid haritasında sıralama hataları %9,8\'den %0,6\'ya indi','Otomatik collider denetim araçları: duvar aralıklarını kapatan 369 köprü, köşelere takılma yerine hafif kayma','adb tabanlı cihaz üstü ölçüm düzeneği (ısınma, kare süresi, profil kaydı, sıcaklık): Raid modu 17 fps\'ten sabit 60 fps\'e','Oynanış: üç sınıf, sezonlu PvP ligi, Günün Raid\'i, arkadaş kodu ve düello daveti; satın alma yok, reklam yalnız maç aralarında','Canlı ürün: Play Console yayın süreci, Veri Güvenliği beyanı, GDPR onayı, ödüllü reklam, TR/EN yerelleştirme'],en:['Server-authoritative online 1v1 with Photon Fusion 2; matchmaking split by build version','Unity Gaming Services backend (Authentication, Cloud Save, Leaderboards, Cloud Code); league points sanity-checked server-side','One unified isometric depth rule for characters, trees, walls and projectiles; Raid sorting errors cut from 9.8% to 0.6%','Automated collider-audit tooling: 369 bridges sealing wall gaps, soft sliding instead of corner snags','adb-based on-device profiling harness (warm-up, frame times, profiler capture, temperature): Raid from 17 fps to a stable 60 fps','Gameplay: three classes, seasonal PvP leagues, a Daily Raid, friend codes and duel invites; no purchases, ads only between matches','Live ops: Play Console releases, Data Safety form, GDPR consent, rewarded ads, TR/EN localization']}},
- {cat:{tr:'Oyun Geliştirme · Kişisel Proje · Yayın incelemede',en:'Game Development · Personal Project · Release under review'},n:{tr:'BrickRift',en:'BrickRift'},
+ {cat:{tr:'Oyun Geliştirme · Kişisel Proje · Google Play\'de yayında',en:'Game Development · Personal Project · Live on Google Play'},n:{tr:'BrickRift',en:'BrickRift'},
   d:{tr:'Klasik tuğla kırmayı masa tenisi raketi fiziğiyle birleştiren Android oyunu: kaydırarak falso, raketi iterek smaç. Top yerçekimi, sürtünme ve Magnus etkisiyle yön değiştiriyor; tüm fizik motoru özel yazıldı.',en:'An Android brick breaker that swaps the classic paddle for table-tennis physics: swipe for spin, push up to smash. The ball curves through gravity, friction and the Magnus effect, on a fully custom physics engine.'},
-  img:'img/brickrift.jpg',c:['Unity 6','C#','Python','Google Play Billing','Android'],k:[['120',{tr:'Hz · özel fizik motoru',en:'Hz · custom physics'}],['100',{tr:'bölüm · 10 dünya',en:'levels · 10 worlds'}],['21',{tr:'güç türü',en:'power-up types'}]],
-  b:{tr:['Masa tenisi tarzı raket: falso, raketi iterek smaç ve sınırlı smaç zinciri bonusu; topu yapay yönlendiren hile yok','Yerçekimi, sürtünme ve Magnus etkili özel 2D fizik motoru (120 Hz), fizik için otomatik testler','10 dünyada 100 özgün bölüm ve her dünyanın sonunda boss; zırhlı, çelik, bomba, yıldız bloklar ve topu savuran dönen dişliler','Modlar: 30 bulmacalık Trick Shots, hayalet yarışı, günlük görevler, Dodge; 130\'dan fazla kostüm, 5 yol arkadaşı karakter','Bölüm, kostüm ve bulmaca üretimi için Python araçları; kodla çizilen grafikler ve kodla kurulan arayüz','Google Play Billing ve uygulama içi güncelleme (Java/Android eklentisi); kozmetik mağaza ve sezon kartı, reklam ve şans kutusu yok','Rolüm: oyun tasarımı, ürün yönetimi, geliştirme, test ve Google Play yayın süreci. Kodlama yapay zekâ destekli (Claude Code); görseller Midjourney/Gemini, müzikler ElevenLabs ile üretildi','Durum: Google Play kapalı testi tamamlandı, yayın başvurusu incelemede'],en:['Table-tennis paddle: spin, push-to-smash and a capped smash-chain bonus; no artificial ball steering','Custom 2D physics engine (120 Hz) with gravity, friction and the Magnus effect, plus automated physics tests','100 original levels across 10 worlds with a boss per world; plated, steel, bomb and star blocks, and spinning gears that deflect the ball','Modes: 30-puzzle Trick Shots, ghost race, daily missions, Dodge; 130+ skins and 5 companion characters','Python tools for level, skin and puzzle generation; procedurally drawn art and UI built in code','Google Play Billing and In-App Updates (Java/Android plugin); cosmetic shop and season pass, no ads or loot boxes','My role: game design, product direction, development, testing and Google Play release. Coding was AI-assisted (Claude Code); art by Midjourney/Gemini, music by ElevenLabs','Status: Google Play closed testing completed, production access under review']}},
+  img:'img/brickrift.webp',demo:1,store:'https://play.google.com/store/apps/details?id=com.erolstudio.brickrift',c:['Unity 6','C#','Python','Google Play Billing','Android'],k:[['120',{tr:'Hz · özel fizik motoru',en:'Hz · custom physics'}],['100',{tr:'bölüm · 10 dünya',en:'levels · 10 worlds'}],['21',{tr:'güç türü',en:'power-up types'}]],
+  b:{tr:['Masa tenisi tarzı raket: falso, raketi iterek smaç ve sınırlı smaç zinciri bonusu; topu yapay yönlendiren hile yok','Yerçekimi, sürtünme ve Magnus etkili özel 2D fizik motoru (120 Hz), fizik için otomatik testler','10 dünyada 100 özgün bölüm ve her dünyanın sonunda boss; zırhlı, çelik, bomba, yıldız bloklar ve topu savuran dönen dişliler','Modlar: 30 bulmacalık Trick Shots, hayalet yarışı, günlük görevler, Dodge; 130\'dan fazla kostüm, 5 yol arkadaşı karakter','Bölüm, kostüm ve bulmaca üretimi için Python araçları; kodla çizilen grafikler ve kodla kurulan arayüz','Google Play Billing ve uygulama içi güncelleme (Java/Android eklentisi); kozmetik mağaza ve sezon kartı, reklam ve şans kutusu yok','Rolüm: oyun tasarımı, ürün yönetimi, geliştirme, test ve Google Play yayın süreci. Kodlama yapay zekâ destekli (Claude Code); görseller Midjourney/Gemini, müzikler ElevenLabs ile üretildi','Durum: Google Play kapalı testi tamamlandı, oyun Google Play\'de yayında'],en:['Table-tennis paddle: spin, push-to-smash and a capped smash-chain bonus; no artificial ball steering','Custom 2D physics engine (120 Hz) with gravity, friction and the Magnus effect, plus automated physics tests','100 original levels across 10 worlds with a boss per world; plated, steel, bomb and star blocks, and spinning gears that deflect the ball','Modes: 30-puzzle Trick Shots, ghost race, daily missions, Dodge; 130+ skins and 5 companion characters','Python tools for level, skin and puzzle generation; procedurally drawn art and UI built in code','Google Play Billing and In-App Updates (Java/Android plugin); cosmetic shop and season pass, no ads or loot boxes','My role: game design, product direction, development, testing and Google Play release. Coding was AI-assisted (Claude Code); art by Midjourney/Gemini, music by ElevenLabs','Status: Google Play closed testing completed, now live on Google Play']}},
  {cat:{tr:'Gömülü Sistemler & IoT',en:'Embedded Systems & IoT'},n:{tr:'ESP32 IR Köprüsü & Akıllı Yemlik',en:'ESP32 IR Bridge & Smart Feeder'},
   d:{tr:'Kumanda sinyallerini kaydedip yeniden gönderen, web arayüzünden yönetilen ESP32 sistemi ve MQTT ile kontrol edilen ESP8266 yemlik.',en:'An ESP32 system that records and replays remote-control signals from a web UI, and an ESP8266 feeder controlled over MQTT.'},
-  ill:'iot',gen:'img/gen_iot.jpg',c:['ESP32','ESP8266','MQTT','C++ (Arduino)'],
+  ill:'iot',gen:'img/gen_iot.webp',c:['ESP32','ESP8266','MQTT','C++ (Arduino)'],
   b:{tr:['IR alıcı ile sinyal kaydı, ESP32\'ye bağlı IR LED ile yeniden gönderim','Yerel web arayüzünden cihaz kontrolü','ESP8266 tabanlı, MQTT üzerinden uzaktan kontrol edilen otomatik yemlik'],en:['Signal capture with an IR receiver, replay through an ESP32-driven IR LED','Device control from a local web interface','ESP8266 pet feeder controlled remotely over MQTT']}}
 ];
 const TL=[
@@ -577,9 +650,9 @@ const TL=[
 /* ---------- render ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let expIdx=0;
-const EXPIMG={robotics:'img/gen_robotics.jpg',slam:'img/gen_slam.jpg',vision:'img/gen_vision.jpg',sim:'img/gen_sim.jpg',game:'img/duelkeep_key.jpg',software:'img/gen_software.jpg',fab:'img/gen_fab.jpg'};
+const EXPIMG={robotics:'img/gen_robotics.webp',slam:'img/gen_slam.webp',vision:'img/gen_vision.webp',sim:'img/gen_sim.webp',game:'img/duelkeep_key.webp',software:'img/gen_software.webp',fab:'img/gen_fab.webp'};
 function renderExp(){
-  document.getElementById('expList').innerHTML=EXP.map((x,i)=>`<li><button type="button" role="tab" aria-selected="${i===expIdx}" data-i="${i}"><span class="n">0${i+1}</span><span class="t">${esc(T(x.t))}</span><span class="a"></span></button></li>`).join('');
+  document.getElementById('expList').innerHTML=EXP.map((x,i)=>`<li role="presentation"><button type="button" role="tab" id="expTab${i}" aria-controls="expPanel" tabindex="${i===expIdx?0:-1}" aria-selected="${i===expIdx}" data-i="${i}"><span class="n">0${i+1}</span><span class="t">${esc(T(x.t))}</span><span class="a"></span></button></li>`).join('');
   const x=EXP[expIdx];
   const g=(GEN||x.k==='game')?EXPIMG[x.k]:null;document.getElementById('expViz').innerHTML=(g?`<img src="${g}" alt="">`:ILLB()[x.k])+`<span class="corner">${x.k==='game'?(L==='tr'?'OYUN TANITIM GÖRSELİ':'GAME KEY ART'):g?(L==='tr'?'YAPAY ZEKA İLLÜSTRASYONU':'AI ILLUSTRATION'):(L==='tr'?'İLLÜSTRASYON':'ILLUSTRATIVE')} · 0${expIdx+1}/07</span>`;
   document.getElementById('expNum').textContent='0'+(expIdx+1)+' / 07';
@@ -590,10 +663,12 @@ function renderExp(){
 }
 const expList=document.getElementById('expList');
 expList.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;expIdx=+b.dataset.i;renderExp();expList.querySelector(`[data-i="${expIdx}"]`).focus()});
+expList.addEventListener('keydown',e=>{const d={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];if(!d)return;e.preventDefault();expIdx=(expIdx+d+EXP.length)%EXP.length;renderExp();expList.querySelector(`[data-i="${expIdx}"]`).focus()});
 expList.addEventListener('mouseover',e=>{if(!fine)return;const b=e.target.closest('button');if(!b||+b.dataset.i===expIdx)return;expIdx=+b.dataset.i;renderExp()});
 
 const badge=p=>p.key?`<span class="badge key">${L==='tr'?'OYUN TANITIM GÖRSELİ':'GAME KEY ART'}</span>`:GEN&&p.gen&&!p.img?`<span class="badge ill">${L==='tr'?'YAPAY ZEKA İLLÜSTRASYONU':'AI ILLUSTRATION'}</span>`:p.img?`<span class="badge real">${L==='tr'?'GERÇEK EKRAN GÖRÜNTÜSÜ':'REAL SCREENSHOT'}</span>`:`<span class="badge ill">${L==='tr'?'İLLÜSTRASYON':'ILLUSTRATIVE'}</span>`;
 const GEN=true;
+const demoBtn=()=>`<button class="btn pri mag" type="button" data-demo="1"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>${L==='tr'?'Demoyu oyna':'Play the demo'}</button>`;
 const storeBtn=p=>`<a class="btn pri mag" href="${p.store}" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3 1.8v12.4c0 .5.5.8.9.5l10.4-6.2c.4-.2.4-.8 0-1L3.9 1.3C3.5 1 3 1.3 3 1.8z"/></svg>${L==='tr'?'Google Play\'de aç':'Get it on Google Play'}</a>`;
 const media=p=>(p.img||(GEN&&p.gen))?`<img src="${p.img||p.gen}"${p.key?' style="object-position:0 50%;transform-origin:0 50%"':''} alt="${esc(T(p.n))}" loading="lazy">`:ILLB()[p.ill];
 const arrow='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
@@ -604,7 +679,7 @@ function renderProj(){
       <h3>${esc(T(p.n))}</h3><p>${esc(T(p.d))}</p>
       ${p.k?`<div class="kpis">${p.k.map(k=>`<div><b>${esc(typeof k[0]==='string'?k[0]:T(k[0]))}</b><span>${esc(typeof k[1]==='string'?k[1]:T(k[1]))}</span></div>`).join('')}</div>`:''}
       <div class="chips">${p.c.map(c=>`<span class="chip">${esc(typeof c==='string'?c:T(c))}</span>`).join('')}</div>
-      <div class="cta" style="margin:0">${p.store?storeBtn(p):''}<button class="btn mag" type="button" data-i="${i}">${L==='tr'?'Detaylı görünüm':'Detailed view'} ${arrow}</button></div>
+      <div class="cta" style="margin:0">${p.store?storeBtn(p):''}${p.demo?demoBtn():''}<button class="btn mag" type="button" data-i="${i}">${L==='tr'?'Detaylı görünüm':'Detailed view'} ${arrow}</button></div>
     </div></article>`).join('');
   bindTilt();bindMag();observe();
 }
@@ -620,7 +695,7 @@ function openP(i){const p=PROJ[i];
   G.onclick=e=>{const b=e.target.closest('button');if(!b)return;G.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
     const lab=b.dataset.kind==='real'?`<span class="badge real">${L==='tr'?'GERÇEK EKRAN GÖRÜNTÜSÜ':'REAL SCREENSHOT'}</span>`:`<span class="badge key">${L==='tr'?'OYUN TANITIM GÖRSELİ':'GAME KEY ART'}</span>`;
     document.getElementById('dlgMedia').innerHTML=`<img src="${b.dataset.src}" alt="${esc(T(p.n))}">`+lab;};
-  document.getElementById('dlgCta').innerHTML=p.store?storeBtn(p):'';
+  document.getElementById('dlgCta').innerHTML=(p.store?storeBtn(p):'')+(p.demo?demoBtn():'');
   document.getElementById('dlgCat').textContent=T(p.cat);
   document.getElementById('dlgTitle').textContent=T(p.n);
   document.getElementById('dlgList').innerHTML=T(p.b).map(s=>`<li>${esc(s)}</li>`).join('');
@@ -629,7 +704,8 @@ function openP(i){const p=PROJ[i];
 }
 const closeD=()=>{if(dlg.close)dlg.close();else dlg.removeAttribute('open')};
 const projList=document.getElementById('projList');
-projList.addEventListener('click',e=>{const t=e.target.closest('[data-i]');if(t)openP(+t.dataset.i)});
+projList.addEventListener('click',e=>{if(e.target.closest('[data-demo]')){openGame();return}const t=e.target.closest('[data-i]');if(t)openP(+t.dataset.i)});
+document.getElementById('dlgCta').addEventListener('click',e=>{if(e.target.closest('[data-demo]')){closeD();openGame()}});
 projList.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('.pv')){e.preventDefault();openP(+e.target.dataset.i)}});
 document.getElementById('dlgX').addEventListener('click',closeD);
 dlg.addEventListener('click',e=>{if(e.target===dlg)closeD()});
@@ -695,10 +771,15 @@ function setLang(l){L=l;app.dataset.lang=l;root.lang=l;document.getElementById('
   try{localStorage.setItem('lang',l)}catch(e){} renderExp();renderProj();renderTL();fxBind();}
 document.getElementById('langBtn').addEventListener('click',()=>setLang(L==='tr'?'en':'tr'));
 let saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
-setLang(saved==='en'?'en':'tr');
+const qLang=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();
+setLang(qLang==='en'||qLang==='tr'?qLang:saved==='en'||saved==='tr'?saved:/^tr/i.test(navigator.language||'tr')?'tr':'en');
 bindMag();observe();
 
 const nav=document.getElementById('nav');
+const menuBtn=document.getElementById('menuBtn'),mnav=document.getElementById('mnav');
+function setMenu(o){mnav.hidden=!o;menuBtn.setAttribute('aria-expanded',o);document.documentElement.style.overflow=o?'hidden':''}
+menuBtn.addEventListener('click',()=>setMenu(mnav.hidden));mnav.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!mnav.hidden)setMenu(false)});addEventListener('resize',()=>{if(innerWidth>860&&!mnav.hidden)setMenu(false)});
 addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
 const cur=document.querySelector('.cur'),ring=document.querySelector('.cur-r');
 let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,nx=0,ny=0,pointerAt=-1e9;
@@ -710,6 +791,86 @@ if(fine&&!reduce)(function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.tra
 const copyBtn=document.getElementById('copyMail');
 copyBtn.addEventListener('click',()=>{const t='mstfsbt.erol@gmail.com';
   (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{copyBtn.textContent=L==='tr'?'KOPYALANDI':'COPIED'},()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('mail'));const s=getSelection();s.removeAllRanges();s.addRange(r)})});
+
+
+/* ---------- BrickRift browser demo ---------- */
+let firePulse=null;
+const gdlg=document.getElementById('gdlg'),gc=document.getElementById('game'),gx=gc.getContext('2d');
+let GW=800,GH=500,G=null,gRaf=0,gLast=0,gAcc=0;
+const GCOL=['#00D9FF','#176BFF','#7A6BFF','#3DE0A8','#F2F6FA'];
+function gBricks(){const cols=Math.floor((GW-32)/72),x0=(GW-cols*72+8)/2,b=[];for(let r=0;r<5;r++)for(let c=0;c<cols;c++)b.push({x:x0+c*72,y:60+r*26,w:64,h:18,on:true,r});return b}
+function gNew(){G={bricks:gBricks(),score:0,lives:3,px:GW/2,py:GH-48,pvx:0,pvy:0,tx:GW/2,ty:GH-48,b:null,trail:[],state:'ready',flash:0,ftxt:''}}
+function gServe(){G.b={x:G.px,y:G.py-16,vx:(Math.random()-.5)*120,vy:-700,w:0};G.trail=[];G.state='play'}
+function gStep(dt){
+  const ox=G.px,oy=G.py;G.px+=(Math.max(58,Math.min(GW-58,G.tx))-G.px)*.35;G.py+=(Math.max(GH-150,Math.min(GH-26,G.ty))-G.py)*.35;G.pvx=(G.px-ox)/dt;G.pvy=(G.py-oy)/dt;
+  if(G.state!=='play')return;const b=G.b,K=.02,r=8;
+  b.vy+=420*dt;b.vx+=-K*b.w*b.vy*dt;b.vy+=K*b.w*b.vx*dt;b.w*=Math.exp(-.45*dt);
+  const sp=Math.hypot(b.vx,b.vy);if(sp>1150){b.vx*=1150/sp;b.vy*=1150/sp}
+  b.x+=b.vx*dt;b.y+=b.vy*dt;
+  if(b.x<r){b.x=r;b.vx=Math.abs(b.vx)*.98;b.w*=.8}if(b.x>GW-r){b.x=GW-r;b.vx=-Math.abs(b.vx)*.98;b.w*=.8}if(b.y<r){b.y=r;b.vy=Math.abs(b.vy)}
+  if(b.vy-G.pvy>0&&b.y+r>=G.py-6&&b.y-r<=G.py+8&&Math.abs(b.x-G.px)<=58+r){b.y=G.py-6-r;const rel=G.pvx-b.vx;
+    b.vy=Math.max(-1050,-Math.max(Math.abs(b.vy)*.92,660)+Math.min(0,G.pvy)*.55);b.w=Math.max(-45,Math.min(45,b.w+rel*.03));b.vx+=rel*.2+(b.x-G.px)*1.4;
+    if(G.pvy<-260){G.flash=1;G.ftxt=L==='tr'?'SMAÇ!':'SMASH!'}else if(Math.abs(rel)>420){G.flash=1;G.ftxt=L==='tr'?'FALSO!':'SPIN!'}}
+  for(const k of G.bricks){if(!k.on)continue;const cx=Math.max(k.x,Math.min(k.x+k.w,b.x)),cy=Math.max(k.y,Math.min(k.y+k.h,b.y)),dx=b.x-cx,dy=b.y-cy;
+    if(dx*dx+dy*dy<=r*r){k.on=false;G.score+=10;if(Math.abs(dx)>Math.abs(dy))b.vx=-b.vx;else b.vy=-b.vy;break}}
+  if(!G.bricks.some(k=>k.on)){G.bricks=gBricks();G.score+=100;G.flash=1;G.ftxt=L==='tr'?'TEMİZ! +100':'CLEAR! +100'}
+  if(b.y>GH+30){G.lives--;G.b=null;G.state=G.lives>0?'ready':'over'}
+}
+function gDraw(){
+  gx.fillStyle='#050608';gx.fillRect(0,0,GW,GH);gx.strokeStyle='rgba(140,190,230,.07)';gx.lineWidth=1;gx.beginPath();
+  for(let x=0;x<=GW;x+=40){gx.moveTo(x+.5,0);gx.lineTo(x+.5,GH)}for(let y=0;y<=GH;y+=40){gx.moveTo(0,y+.5);gx.lineTo(GW,y+.5)}gx.stroke();
+  for(const k of G.bricks){if(!k.on)continue;const c=GCOL[k.r%5];gx.globalAlpha=.22;gx.fillStyle=c;gx.fillRect(k.x,k.y,k.w,k.h);gx.globalAlpha=1;gx.strokeStyle=c;gx.strokeRect(k.x+.5,k.y+.5,k.w-1,k.h-1)}
+  gx.shadowColor='#00D9FF';gx.shadowBlur=16;gx.fillStyle='#F2F6FA';gx.fillRect(G.px-58,G.py-6,116,10);gx.shadowBlur=0;
+  const b=G.b||{x:G.px,y:G.py-16,w:0};
+  if(G.b){G.trail.push([b.x,b.y]);if(G.trail.length>22)G.trail.shift();G.trail.forEach((p,i)=>{gx.globalAlpha=i/22*.5;gx.fillStyle='#00D9FF';gx.beginPath();gx.arc(p[0],p[1],8*i/22,0,7);gx.fill()});gx.globalAlpha=1}
+  gx.shadowColor='#00D9FF';gx.shadowBlur=14;gx.fillStyle='#fff';gx.beginPath();gx.arc(b.x,b.y,8,0,7);gx.fill();gx.shadowBlur=0;
+  gx.font='500 13px "JetBrains Mono",monospace';gx.textBaseline='top';gx.fillStyle='#8C99AB';gx.textAlign='left';gx.fillText((L==='tr'?'SKOR ':'SCORE ')+String(G.score).padStart(4,'0'),16,16);
+  gx.fillText((L==='tr'?'CAN ':'LIVES ')+'◆'.repeat(Math.max(0,G.lives)),16,36);
+  gx.textAlign='center';gx.fillStyle=Math.abs(b.w)>8?'#00D9FF':'#66758A';gx.fillText((L==='tr'?'FALSO ':'SPIN ')+(b.w>=0?'+':'−')+String(Math.abs(Math.round(b.w))).padStart(2,'0'),GW/2,16);
+  if(G.flash>0){gx.globalAlpha=G.flash;gx.fillStyle='#00D9FF';gx.font='800 34px Archivo,system-ui,sans-serif';gx.fillText(G.ftxt,GW/2,GH*.45);gx.globalAlpha=1;G.flash-=.02}
+  if(G.state!=='play'){gx.fillStyle='rgba(5,6,8,.55)';gx.fillRect(0,GH*.4,GW,70);gx.fillStyle='#F2F6FA';gx.font='600 15px "JetBrains Mono",monospace';
+    gx.fillText(G.state==='over'?(L==='tr'?'OYUN BİTTİ · TEKRAR İÇİN DOKUN':'GAME OVER · TAP TO RETRY'):(L==='tr'?'SERVİS İÇİN DOKUN VEYA TIKLA':'TAP OR CLICK TO SERVE'),GW/2,GH*.4+26)}
+}
+function gLoop(t){gRaf=requestAnimationFrame(gLoop);gAcc+=Math.min(.05,(t-gLast)/1000);gLast=t;while(gAcc>=1/120){gStep(1/120);gAcc-=1/120}gDraw()}
+function openGame(){GW=innerWidth<620?500:800;GH=innerWidth<620?640:500;gc.width=GW;gc.height=GH;gNew();if(gdlg.showModal)gdlg.showModal();else gdlg.setAttribute('open','');gLast=performance.now();gAcc=0;cancelAnimationFrame(gRaf);gRaf=requestAnimationFrame(gLoop);gc.focus()}
+function closeGame(){cancelAnimationFrame(gRaf);if(gdlg.open&&gdlg.close)gdlg.close();else gdlg.removeAttribute('open')}
+gdlg.addEventListener('close',()=>cancelAnimationFrame(gRaf));document.getElementById('gX').addEventListener('click',closeGame);gdlg.addEventListener('click',e=>{if(e.target===gdlg)closeGame()});
+const gPos=e=>{const r=gc.getBoundingClientRect();G.tx=(e.clientX-r.left)/r.width*GW;G.ty=(e.clientY-r.top)/r.height*GH-(e.pointerType==='touch'?40:0)};
+const gAct=()=>{if(G.state==='ready')gServe();else if(G.state==='over')gNew()};
+gc.addEventListener('pointermove',e=>{if(G)gPos(e)});gc.addEventListener('pointerdown',e=>{if(!G)return;gPos(e);gAct()});
+gc.addEventListener('keydown',e=>{if(!G)return;if(e.key==='ArrowLeft'){G.tx=G.px-90;e.preventDefault()}else if(e.key==='ArrowRight'){G.tx=G.px+90;e.preventDefault()}else if(e.key==='ArrowUp'){G.ty=GH-150;setTimeout(()=>{if(G)G.ty=GH-48},140);e.preventDefault()}else if(e.key===' '||e.key==='Enter'){gAct();e.preventDefault()}});
+
+/* ---------- terminal ---------- */
+const term=document.getElementById('term'),termOut=document.getElementById('termOut'),termIn=document.getElementById('termIn'),termBtn=document.getElementById('termBtn');
+const tHist=[];let tHi=0;
+function tPrint(txt,cls){const d=document.createElement('div');if(cls)d.className=cls;d.textContent=txt;termOut.appendChild(d);termOut.scrollTop=termOut.scrollHeight}
+function tHelp(){tPrint(L==='tr'?
+'Komutlar:\n  hakkimda        kim bu?\n  projeler        proje listesi\n  ac <no>         projeyi aç (ör. ac 3)\n  oyna            BrickRift demosunu başlat\n  tara            LiDAR taraması gönder\n  cv              özgeçmişi aç\n  iletisim        iletişim bilgileri\n  git <bölüm>     hakkimda | uzmanlik | projeler | yolculuk | iletisim\n  dil <tr|en>     dili değiştir\n  temizle · cikis':
+'Commands:\n  about           who is this?\n  projects        list projects\n  open <n>        open a project (e.g. open 3)\n  play            start the BrickRift demo\n  scan            fire a LiDAR scan\n  cv              open the résumé\n  contact         contact details\n  goto <section>  about | expertise | work | journey | contact\n  lang <tr|en>    switch language\n  clear · exit')}
+function openTerm(){term.hidden=false;if(!termOut.childElementCount){tPrint(L==='tr'?'MSE-OS v1.0 · Hoş geldin. Komutlar için "yardim" yaz.':'MSE-OS v1.0 · Welcome. Type "help" for commands.','k')}termIn.focus()}
+function closeTerm(){term.hidden=true;termBtn.focus()}
+const SEC={hakkimda:'about',about:'about',uzmanlik:'expertise',expertise:'expertise',projeler:'work',work:'work',projects:'work',yolculuk:'journey',journey:'journey',iletisim:'contact',contact:'contact'};
+function tRun(raw){tPrint(raw,'c');const n=raw.trim().toLocaleLowerCase('tr').replace(/ı/g,'i').replace(/ç/g,'c').replace(/ş/g,'s').replace(/ğ/g,'g').replace(/ö/g,'o').replace(/ü/g,'u');if(!n)return;const [c,a]=n.split(/\s+/);const tr=L==='tr';
+  if(c==='yardim'||c==='help'||c==='?')tHelp();
+  else if(c==='hakkimda'||c==='about'||c==='whoami')tPrint(tr?'Mustafa Sabit Erol · Bilgisayar Mühendisi (KTO Karatay 2026, GNO 3.41).\nROS 2 ile görsel SLAM, LiDAR, simülasyon ve Unity ile mobil oyun geliştirme.\nAnkara, Konya ve Niğde\'deki pozisyonlara açık.':'Mustafa Sabit Erol · Computer Engineer (KTO Karatay 2026, GPA 3.41).\nVisual SLAM on ROS 2, LiDAR, simulation and Unity mobile games.\nOpen to roles in Ankara, Konya and Niğde.');
+  else if(c==='projeler'||c==='projects'||c==='ls')tPrint(PROJ.map((p,i)=>`  ${i+1}. ${T(p.n)}`).join('\n')+(tr?'\nAçmak için: ac <no>':'\nTo open: open <n>'));
+  else if(c==='ac'||c==='open'){const i=parseInt(a,10)-1;if(PROJ[i]){tPrint((tr?'Açılıyor: ':'Opening: ')+T(PROJ[i].n));closeTerm();openP(i)}else tPrint(tr?'Geçersiz numara. "projeler" yaz.':'Invalid number. Try "projects".','e')}
+  else if(c==='oyna'||c==='play'){closeTerm();openGame()}
+  else if(c==='tara'||c==='scan'){if(firePulse){scrollTo({top:0,behavior:reduce?'auto':'smooth'});firePulse();tPrint(tr?'Tarama gönderildi.':'Scan fired.','k')}else tPrint(tr?'3B sahne bu cihazda kapalı.':'3D scene is off on this device.','e')}
+  else if(c==='cv'||c==='ozgecmis'||c==='resume'){tPrint(tr?'Özgeçmiş yeni sekmede açılıyor.':'Opening the résumé in a new tab.');window.open(tr?'cv/Mustafa_Sabit_Erol_CV_TR.pdf':'cv/Mustafa_Sabit_Erol_CV_EN.pdf','_blank','noopener')}
+  else if(c==='iletisim'||c==='contact')tPrint('mstfsbt.erol@gmail.com\nlinkedin.com/in/mustafa-sabit-erol\ngithub.com/XankaiSofestai');
+  else if(c==='git'||c==='goto'||c==='cd'){const id=SEC[a];if(id){closeTerm();document.getElementById(id).scrollIntoView({behavior:reduce?'auto':'smooth'})}else tPrint(tr?'Bölüm bulunamadı.':'No such section.','e')}
+  else if(c==='dil'||c==='lang'){if(a==='tr'||a==='en'){setLang(a);tPrint(a==='tr'?'Dil: Türkçe':'Language: English','k')}else tPrint('tr | en','e')}
+  else if(c==='temizle'||c==='clear'||c==='cls')termOut.innerHTML='';
+  else if(c==='cikis'||c==='exit'||c==='q')closeTerm();
+  else if(c==='sudo')tPrint(tr?'Yetki reddedildi. İyi denemeydi.':'Permission denied. Nice try.','e');
+  else tPrint((tr?'Bilinmeyen komut: ':'Unknown command: ')+c+(tr?' · "yardim" yaz.':' · type "help".'),'e');
+}
+termBtn.addEventListener('click',()=>term.hidden?openTerm():closeTerm());document.getElementById('termX').addEventListener('click',closeTerm);
+document.getElementById('termForm').addEventListener('submit',e=>{e.preventDefault();const v=termIn.value;termIn.value='';if(v.trim()){tHist.push(v);tHi=tHist.length}tRun(v)});
+termIn.addEventListener('keydown',e=>{if(e.key==='ArrowUp'&&tHi>0){termIn.value=tHist[--tHi];e.preventDefault()}else if(e.key==='ArrowDown'){termIn.value=tHist[++tHi]||'';tHi=Math.min(tHi,tHist.length);e.preventDefault()}else if(e.key==='Escape')closeTerm()});
+addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||/^(INPUT|TEXTAREA)$/.test(e.target.tagName)||document.querySelector('dialog[open]'))return;if(e.key==='/'||e.key==='"'||e.key==='`'||e.key==='é'){e.preventDefault();openTerm()}});
+addEventListener('scroll',()=>termBtn.classList.toggle('on',scrollY>innerHeight*.3),{passive:true});
 
 /* ---------- attitude indicator ---------- */
 const adi=document.getElementById('adi'),actx=adi.getContext('2d'),AW=adi.width,AR=AW/2;
@@ -763,10 +924,10 @@ g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
 g.setAttribute('aK',new THREE.Float32BufferAttribute(kind,1));
 g.setAttribute('aH',new THREE.Float32BufferAttribute(hh,1));
 const mat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
-  uniforms:{uSweep:{value:0},uPR:{value:renderer.getPixelRatio()},uO:{value:new THREE.Vector3()}},
-  vertexShader:`attribute float aK;attribute float aH;uniform float uSweep,uPR;uniform vec3 uO;varying float vS,vK,vH,vD;
+  uniforms:{uSweep:{value:0},uPR:{value:renderer.getPixelRatio()},uO:{value:new THREE.Vector3()},uP:{value:new THREE.Vector3()},uPr:{value:0},uPa:{value:0}},
+  vertexShader:`attribute float aK;attribute float aH;uniform float uSweep,uPR,uPr,uPa;uniform vec3 uO,uP;varying float vS,vK,vH,vD;
   void main(){vec4 mv=modelViewMatrix*vec4(position,1.);float d=length(position.xz-uO.xz);
-   float s=1.-smoothstep(0.,.9,abs(d-uSweep));float trail=smoothstep(uSweep-6.,uSweep,d)*step(d,uSweep);
+   float s=1.-smoothstep(0.,.9,abs(d-uSweep));float d2=length(position.xz-uP.xz);s=max(s,(1.-smoothstep(0.,1.1,abs(d2-uPr)))*uPa);float trail=smoothstep(uSweep-6.,uSweep,d)*step(d,uSweep);
    vS=s;vK=aK;vH=aH;vD=trail;gl_PointSize=(1.3+aK*.9+s*2.2)*uPR*(18./-mv.z);gl_Position=projectionMatrix*mv;}`,
   fragmentShader:`varying float vS,vK,vH,vD;void main(){vec2 c=gl_PointCoord-.5;float r=length(c);if(r>.5)discard;
    vec3 blue=vec3(.09,.42,1.),cyan=vec3(0.,.85,1.),white=vec3(.95,.97,1.);
@@ -784,8 +945,20 @@ const orbit=new THREE.Group();scene.add(orbit);const sats=[];
 [[13,.5,0x176BFF,.35],[16,-.35,0x7A6BFF,.22]].forEach(([r,tilt,c,o],i)=>{const pts=[];for(let k=0;k<=256;k++){const a=k/256*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*r,0,Math.sin(a)*r))}
   const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:c,transparent:true,opacity:o}));l.rotation.x=tilt;l.rotation.z=i?.4:-.2;orbit.add(l);
   const sat=new THREE.Mesh(new THREE.SphereGeometry(.13,8,8),new THREE.MeshBasicMaterial({color:i?0x7A6BFF:0x00D9FF}));l.add(sat);sats.push({sat,r,sp:i?.21:.32});});
+const ring2=new THREE.Mesh(new THREE.RingGeometry(0.96,1,96),new THREE.MeshBasicMaterial({color:0xF2F6FA,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));ring2.rotation.x=-Math.PI/2;world.add(ring2);
+const heroEl=document.querySelector('.hero'),hintEl=document.getElementById('hint'),ray=new THREE.Raycaster(),gPlane=new THREE.Plane(new THREE.Vector3(0,1,0),1),hitP=new THREE.Vector3(),tgt=new THREE.Vector3(0,-99,0);
+let yawOff=0,yawVel=0,drag=null,pulseT=-1e9,tgtN=0;
+function pulseAt(lx,lz){mat.uniforms.uP.value.set(lx,0,lz);ring2.position.set(lx,hgt(lx,lz)+.12,lz);tgt.set(lx,hgt(lx,lz)+1.1,lz);tgtN++;pulseT=performance.now();hintEl.classList.add('used')}
+firePulse=()=>pulseAt((Math.random()-.5)*14,(Math.random()-.5)*10);
+heroEl.addEventListener('pointerdown',e=>{if(e.button||e.target.closest('a,button'))return;drag={x:e.clientX,m:0}});
+addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x;drag.x=e.clientX;drag.m+=Math.abs(dx);if(drag.m>6){heroEl.classList.add('drag');yawOff+=dx*.005;yawVel=dx*.005;hintEl.classList.add('used')}},{passive:true});
+addEventListener('pointerup',e=>{if(!drag)return;const click=drag.m<=6;drag=null;heroEl.classList.remove('drag');if(!click)return;
+  const r=cv.getBoundingClientRect();ray.setFromCamera({x:(e.clientX-r.left)/r.width*2-1,y:-((e.clientY-r.top)/r.height)*2+1},cam);
+  if(ray.ray.intersectPlane(gPlane,hitP)){world.worldToLocal(hitP);if(Math.abs(hitP.x)<17&&Math.abs(hitP.z)<17)pulseAt(hitP.x,hitP.z)}});
+addEventListener('pointercancel',()=>{drag=null;heroEl.classList.remove('drag')});
 const TAGS=OB.slice(0,3).map(([x,z,w,d,h],i)=>({id:()=>(L==='tr'?'NESNE-0':'OBJ-0')+(i+1),p:new THREE.Vector3(x,hgt(x,z)+h+.3,z)}));
 TAGS.push({id:()=>L==='tr'?'İKA-01':'UGV-01',p:new THREE.Vector3(),veh:true});
+TAGS.push({id:()=>(L==='tr'?'HEDEF-':'TARGET-')+String(tgtN).padStart(2,'0'),p:tgt,pt:true});
 TAGS.forEach(t=>{t.el=document.createElement('div');t.el.className='tag';t.lbl=document.createElement('span');t.el.appendChild(t.lbl);tagsEl.appendChild(t.el)});
 function size(){const r=cv.getBoundingClientRect();if(!r.width)return;renderer.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;
   if(r.width>900)cam.setViewOffset(r.width,r.height,-r.width*.17,0,r.width,r.height);else cam.setViewOffset(r.width,r.height,0,-r.height*.14,r.width,r.height);cam.updateProjectionMatrix()}
@@ -800,7 +973,8 @@ function frame(t){
   veh.position.copy(vp);veh.rotation.y=s*1.6;
   const sw=(s*5.2)%9;mat.uniforms.uSweep.value=sw;mat.uniforms.uO.value.copy(vp);
   ringM.position.set(vp.x,vp.y-.1,vp.z);ringM.scale.setScalar(Math.max(sw,.01));ringM.material.opacity=.6*(1-sw/9);
-  world.rotation.y=s*.05+nx*.15;world.rotation.z=-roll*Math.PI/180*.25;world.rotation.x=pitch*Math.PI/180*.25;
+  if(!drag){yawOff+=yawVel;yawVel*=.94}const pr=(t-pulseT)/1000*10;mat.uniforms.uPr.value=pr;mat.uniforms.uPa.value=Math.max(0,1-pr/16);ring2.scale.setScalar(Math.max(pr,.01));ring2.material.opacity=.8*Math.max(0,1-pr/16);
+  world.rotation.y=s*.05+nx*.15+yawOff;world.rotation.z=-roll*Math.PI/180*.25;world.rotation.x=pitch*Math.PI/180*.25;
   orbit.rotation.y=-s*.03;sats.forEach(o=>{const a=s*o.sp;o.sat.position.set(Math.cos(a)*o.r,0,Math.sin(a)*o.r)});
   const camR=small?31:26;cam.position.set(Math.sin(.6)*camR,11.5-ny*1.5,Math.cos(.6)*camR);cam.lookAt(0,-1,0);
   renderer.render(scene,cam);drawADI();
@@ -809,9 +983,9 @@ function frame(t){
     document.getElementById('scanHz').textContent=(10+Math.sin(s)*.04).toFixed(2);
     const r=cv.getBoundingClientRect();
     TAGS.forEach(tg=>{if(tg.veh)tg.p.set(vp.x,vp.y+.7,vp.z);v3.copy(tg.p);world.localToWorld(v3);v3.project(cam);
-      const x=(v3.x*.5+.5)*r.width,y=(-v3.y*.5+.5)*r.height,ok=v3.z<1&&x>40&&x<r.width-40&&y>90&&y<r.height-40;
+      const x=(v3.x*.5+.5)*r.width,y=(-v3.y*.5+.5)*r.height,ok=!(tg.pt&&!tgtN)&&v3.z<1&&x>40&&x<r.width-40&&y>90&&y<r.height-40;
       tg.el.style.display=ok?'block':'none';tg.el.style.transform=`translate(${x}px,${y}px)`;
-      tg.lbl.textContent=tg.veh?`${tg.id()} · ${vp.x.toFixed(1)}, ${vp.z.toFixed(1)}`:`${tg.id()} · ${Math.hypot(tg.p.x-vp.x,tg.p.z-vp.z).toFixed(1)} m`;});}
+      tg.lbl.textContent=tg.pt?`${tg.id()} · ${tg.p.x.toFixed(1)}, ${tg.p.z.toFixed(1)}`:tg.veh?`${tg.id()} · ${vp.x.toFixed(1)}, ${vp.z.toFixed(1)}`:`${tg.id()} · ${Math.hypot(tg.p.x-vp.x,tg.p.z-vp.z).toFixed(1)} m`;});}
 }
 requestAnimationFrame(frame);
 })();

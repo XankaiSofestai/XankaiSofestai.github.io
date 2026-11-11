@@ -351,6 +351,42 @@ h2{font-size:clamp(36px,5.2vw,80px);line-height:.94}
 .btn.lnk:hover{border-color:transparent;color:var(--cyan)}
 .hero .veil{background:linear-gradient(90deg,rgba(5,6,8,.96) 0%,rgba(5,6,8,.82) 38%,rgba(5,6,8,0) 66%),linear-gradient(0deg,var(--bg) 0%,transparent 35%)}
 @media (max-width:900px){.tbtn{left:auto;right:max(16px,env(safe-area-inset-right,0px))}.about{grid-template-columns:1fr}.p,.p:nth-child(even){grid-template-columns:1fr;gap:22px}.hero .veil{background:linear-gradient(0deg,var(--bg) 10%,rgba(5,6,8,.7) 62%,rgba(5,6,8,.35))}}
+
+/* ---------- reference pass (Linear / Anduril / B. Chiang): quiet type, explain first ---------- */
+:root{--bg:#06080B;--fg:#E9EEF3;--muted:#93A0B1}
+body{color:var(--fg)}
+h2{text-transform:none;font-stretch:100%;font-weight:600;font-size:clamp(32px,4.4vw,62px);line-height:1.02;letter-spacing:-.03em}
+.sh{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,6vw,96px);align-items:end}
+.shl{display:grid;gap:18px}
+.shr p{margin:0;font-size:clamp(17px,1.5vw,21px);line-height:1.45;color:var(--muted);max-width:44ch}
+.shr b,.glance b{color:var(--fg);font-weight:500}
+.contact h2{text-transform:uppercase;font-stretch:125%;font-weight:800;line-height:.9}
+.glance{border-bottom:1px solid var(--line);position:relative}
+.glance .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.glance .wrap>div{padding:clamp(28px,4vw,56px) clamp(16px,2.4vw,36px) clamp(28px,4vw,56px) 0;border-right:1px solid var(--line);display:grid;gap:12px;align-content:start}
+.glance .wrap>div+div{padding-left:clamp(16px,2.4vw,36px)}
+.glance .wrap>div:last-child{border-right:0}
+.glance .mono{color:var(--dim)}
+.glance h3{font-size:19px;font-stretch:100%;font-weight:600;letter-spacing:-.01em}
+.glance p{margin:0;color:var(--muted);font-size:15px;line-height:1.55;max-width:36ch}
+.marq{padding-block:16px;background:none}
+.marq span,.marq span:nth-child(3n+2),.marq span:nth-child(5n+4){font-stretch:100%;font-weight:500;font-size:13px;font-family:var(--f-mono);letter-spacing:.14em;color:var(--dim);-webkit-text-stroke:0}
+.marq span b{font-weight:400;color:var(--line-2)}
+/* projects as a calm grid of cards */
+.proj{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.p,.p:nth-child(even){display:flex;flex-direction:column;gap:0;border:1px solid var(--line);background:rgba(10,15,24,.55);transition:border-color .3s,background .3s}
+.p:hover{border-color:var(--line-2);background:rgba(12,18,29,.8)}
+.p .pv{border:0;border-bottom:1px solid var(--line);aspect-ratio:16/9;flex:none;width:100%}
+.p .pi{padding:clamp(20px,2.4vw,32px);gap:16px;align-content:start;flex:1}
+.p h3{font-size:clamp(22px,2vw,28px);font-stretch:100%;font-weight:600}
+.pi p{font-size:15px;color:var(--muted);max-width:none}
+.p .cta{margin-top:auto!important;padding-top:6px}
+.p:first-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:stretch}
+.p:first-child .pv{border-bottom:0;border-right:1px solid var(--line);aspect-ratio:auto;min-height:340px;height:100%}
+.p:first-child .pi{align-content:center}
+.rv.pre{transform:translateY(16px);opacity:.6}
+@media (max-width:900px){.sh{grid-template-columns:1fr;align-items:start}.glance .wrap{grid-template-columns:1fr}.glance .wrap>div,.glance .wrap>div+div{border-right:0;border-bottom:1px solid var(--line);padding:24px 0}.glance .wrap>div:last-child{border-bottom:0}
+  .proj{grid-template-columns:1fr}.p:first-child{display:flex}.p:first-child .pv{border-right:0;border-bottom:1px solid var(--line);aspect-ratio:16/9;min-height:0;height:auto}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media (prefers-reduced-motion:reduce){#boot{display:none}.pv img{transform:none!important}}
 </style>
@@ -442,10 +478,15 @@ h2{font-size:clamp(36px,5.2vw,80px);line-height:.94}
   <div class="scroll mono" aria-hidden="true"><span lang="tr">Keşfet</span><span lang="en">Scroll</span><i></i></div>
 </section>
 
+<section class="glance gut" aria-label="Özet / Summary"><div class="wrap">
+  <div><span class="mono"><span lang="tr">ŞEK</span><span lang="en">FIG</span> 0.1</span><h3 lang="tr">Otonom sistemler</h3><h3 lang="en">Autonomous systems</h3><p lang="tr">ROS 2 üzerinde iki kameralı görsel SLAM, LiDAR ile engel algılama ve Webots simülasyonu.</p><p lang="en">Stereo visual SLAM on ROS 2, LiDAR obstacle detection and Webots simulation.</p></div>
+  <div><span class="mono"><span lang="tr">ŞEK</span><span lang="en">FIG</span> 0.2</span><h3 lang="tr">Oyun geliştirme</h3><h3 lang="en">Game development</h3><p lang="tr">Unity ile geliştirdiğim iki mobil oyun Google Play'de yayında. Biri sunucu otoriteli, gerçek zamanlı çok oyunculu.</p><p lang="en">Two Unity mobile games live on Google Play. One is server-authoritative, real-time multiplayer.</p></div>
+  <div><span class="mono"><span lang="tr">ŞEK</span><span lang="en">FIG</span> 0.3</span><h3 lang="tr">Gömülü sistemler</h3><h3 lang="en">Embedded systems</h3><p lang="tr">ESP32 ile kızılötesi kumanda köprüsü ve MQTT ile kontrol edilen ESP8266 akıllı yemlik.</p><p lang="en">An ESP32 infrared remote bridge and an MQTT-controlled ESP8266 smart feeder.</p></div>
+</div></section>
 <div class="marq" aria-hidden="true"><div class="trk" id="marq"><span>ROS 2<b>/</b></span><span>ORB-SLAM2<b>/</b></span><span>RTAB-Map<b>/</b></span><span>LiDAR<b>/</b></span><span>Webots<b>/</b></span><span>Gazebo<b>/</b></span><span>Unity 6<b>/</b></span><span>C#<b>/</b></span><span>Photon Fusion 2<b>/</b></span><span>A*<b>/</b></span><span>ESP32<b>/</b></span><span>MQTT<b>/</b></span><span>Ubuntu<b>/</b></span><span>ROS 2<b>/</b></span><span>ORB-SLAM2<b>/</b></span><span>RTAB-Map<b>/</b></span><span>LiDAR<b>/</b></span><span>Webots<b>/</b></span><span>Gazebo<b>/</b></span><span>Unity 6<b>/</b></span><span>C#<b>/</b></span><span>Photon Fusion 2<b>/</b></span><span>A*<b>/</b></span><span>ESP32<b>/</b></span><span>MQTT<b>/</b></span><span>Ubuntu<b>/</b></span></div></div>
 <section class="s gut" id="about">
   <div class="wrap">
-    <div class="sh"><span class="mono">01 / <span lang="tr">Hakkımda</span><span lang="en">About</span></span><h2 lang="tr">KODUN<br>ÖTESİNDE<span class="dot">.</span></h2><h2 lang="en">BEYOND<br>THE CODE<span class="dot">.</span></h2></div>
+    <div class="sh"><div class="shl"><span class="mono">01 / <span lang="tr">Hakkımda</span><span lang="en">About</span></span><h2 lang="tr">Kodun ötesinde<span class="dot">.</span></h2><h2 lang="en">Beyond the code<span class="dot">.</span></h2></div></div>
     <div class="about">
       <div></div>
       <div class="rv">
@@ -469,7 +510,7 @@ h2{font-size:clamp(36px,5.2vw,80px);line-height:.94}
 
 <section class="s gut" id="expertise">
   <div class="wrap">
-    <div class="sh"><span class="mono">02 / <span lang="tr">Uzmanlık</span><span lang="en">Expertise</span></span><h2 lang="tr">Yedi<br>disiplin<span class="dot">.</span></h2><h2 lang="en">SEVEN<br>DISCIPLINES<span class="dot">.</span></h2></div>
+    <div class="sh"><div class="shl"><span class="mono">02 / <span lang="tr">Uzmanlık</span><span lang="en">Expertise</span></span><h2 lang="tr">Yedi disiplin<span class="dot">.</span></h2><h2 lang="en">Seven disciplines<span class="dot">.</span></h2></div><div class="shr"><p lang="tr"><b>Yedi alan, tek hedef.</b> Algılamadan arayüze kadar bir sistemi uçtan uca kurabilmek. Bir alan seç, onu nerede kullandığımı gör.</p><p lang="en"><b>Seven fields, one goal.</b> Building a system end to end, from perception to interface. Pick a field to see where I used it.</p></div></div>
     <div class="exp">
       <ol id="expList" role="tablist" aria-orientation="vertical"></ol>
       <div class="panel" role="tabpanel" id="expPanel" aria-live="polite">
@@ -488,14 +529,14 @@ h2{font-size:clamp(36px,5.2vw,80px);line-height:.94}
 
 <section class="s gut" id="work">
   <div class="wrap">
-    <div class="sh"><span class="mono">03 / <span lang="tr">Seçili projeler</span><span lang="en">Selected work</span></span><h2 lang="tr">Seçili<br>işler<span class="dot">.</span></h2><h2 lang="en">SELECTED<br>WORK<span class="dot">.</span></h2></div>
+    <div class="sh"><div class="shl"><span class="mono">03 / <span lang="tr">Seçili projeler</span><span lang="en">Selected work</span></span><h2 lang="tr">Seçili işler<span class="dot">.</span></h2><h2 lang="en">Selected work<span class="dot">.</span></h2></div><div class="shr"><p lang="tr"><b>Beş proje.</b> İkisi Google Play'de yayında. Her kartta ne yaptığımı, hangi teknolojiyi kullandığımı ve varsa ölçülen sonucu bulursun.</p><p lang="en"><b>Five projects.</b> Two are live on Google Play. Each card shows what I built, the technology behind it and the measured result where there is one.</p></div></div>
     <div class="proj" id="projList"></div>
   </div>
 </section>
 
 <section class="s gut" id="journey">
   <div class="wrap">
-    <div class="sh"><span class="mono">04 / <span lang="tr">Yolculuk</span><span lang="en">Journey</span></span><h2 lang="tr">Mühendislik<br>rotası<span class="dot">.</span></h2><h2 lang="en">ENGINEERING<br>JOURNEY<span class="dot">.</span></h2></div>
+    <div class="sh"><div class="shl"><span class="mono">04 / <span lang="tr">Yolculuk</span><span lang="en">Journey</span></span><h2 lang="tr">Mühendislik rotası<span class="dot">.</span></h2><h2 lang="en">Engineering journey<span class="dot">.</span></h2></div><div class="shr"><p lang="tr"><b>Buraya nasıl geldim.</b> Eğitim, stajlar, yarışmalar ve sıradaki hedef.</p><p lang="en"><b>How I got here.</b> Education, internships, competitions and what comes next.</p></div></div>
     <div class="tl" id="timeline"></div>
   </div>
 </section>
@@ -771,7 +812,7 @@ function scramble(el){ if(reduce||el.dataset.sc)return;el.dataset.sc=1;
 function countUp(el){ if(reduce||el.dataset.cu)return;el.dataset.cu=1;const o=el.textContent;if(!/\d/.test(o))return;const t0=performance.now(),D=1200;
   (function f(t){const k=Math.min(1,Math.max(0,(t-t0)/D)),e=1-Math.pow(1-k,4);el.textContent=o.replace(/\d+/g,m=>String(Math.round(+m*e)));if(k<1)requestAnimationFrame(f);else el.textContent=o})(t0);}
 const fxIO='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const t=en.target;
-  if(t.matches('h2'))scramble(t);else if(t.matches('.pv')){t.classList.add('scan');setTimeout(()=>t.classList.remove('scan'),1500)}else if(t.matches('.kpis b'))countUp(t);
+  if(t.matches('.contact h2'))scramble(t);else if(t.matches('.pv')){t.classList.add('scan');setTimeout(()=>t.classList.remove('scan'),1500)}else if(t.matches('.kpis b'))countUp(t);
   fxIO.unobserve(t)}),{threshold:.35}):null;
 function fxBind(){ if(!fxIO||reduce)return;document.querySelectorAll('h2:not([data-fx]),.pv:not([data-fx]),.kpis b:not([data-fx])').forEach(el=>{el.dataset.fx=1;fxIO.observe(el)});}
 const prog=document.getElementById('prog'),sidex=document.getElementById('sidex'),marq=document.getElementById('marq');

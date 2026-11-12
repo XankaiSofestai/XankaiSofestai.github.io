@@ -395,21 +395,121 @@ h2{text-transform:none;font-stretch:100%;font-weight:600;font-size:clamp(32px,4.
 .pv img{filter:brightness(.86) saturate(.9);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .5s}
 .pv:hover img{filter:none}
 .lead{color:var(--fg)}
-/* ---------- scroll-driven intro: slit opens, LiDAR tunnel, arrive at the scene ---------- */
-#intro,#introCap,#introSkip,#introCue{display:none}
-.has-intro #introSpace{height:280vh}
-.has-intro .hero{position:sticky;top:0;min-height:100svh}
-.has-intro #intro{display:block;position:absolute;left:0;top:0;width:100%;height:100lvh;z-index:20;pointer-events:none}
-.in-intro .hero>.wrap{pointer-events:none}
+
+/* ---------- intro overlay ---------- */
+#introLayer,#introSkip,#introSpace{display:none}
+.has-intro #introSpace{display:block;height:280vh}
+.has-intro .dossier{position:fixed;left:0;right:0;top:0;height:100lvh;overflow:hidden;pointer-events:none}
+.has-intro #introLayer{display:block;position:fixed;inset:0;z-index:150;pointer-events:none;transition:opacity .45s}
+#introLayer.fade{opacity:0}
+#intro{display:block;width:100%;height:100lvh}
+#introCap{position:absolute;left:0;right:0;top:50svh;transform:translateY(-50%);text-align:center;padding-inline:20px;font-family:var(--f-display);font-weight:600;font-size:clamp(26px,5vw,64px);letter-spacing:.02em;color:var(--fg);text-shadow:0 0 30px rgba(15,18,24,.9);opacity:0}
+#introCap.top{top:34svh}
+#introCap small{display:block;margin-top:14px;font:500 11px var(--f-mono);letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+#introCue{position:absolute;left:50%;top:calc(100svh - 150px);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);transition:opacity .4s}
+#introCue i{width:1px;height:38px;background:linear-gradient(var(--cyan),transparent);animation:drip 2s infinite;transform-origin:top}
+.has-intro #introSkip{display:inline-flex;position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:160;white-space:nowrap;font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:rgba(15,18,24,.6);border:1px solid var(--line-2);padding:10px 16px;cursor:pointer}
+#introSkip:hover,#introSkip:focus-visible{color:var(--cyan);border-color:var(--cyan)}
 .in-intro .nav,.in-intro .tbtn,.in-intro #prog{opacity:0!important;pointer-events:none}
 .nav{transition:background .3s,border-color .3s,opacity .5s}
-.in-intro #introCap{display:block;position:absolute;left:0;right:0;top:50svh;transform:translateY(-50%);z-index:21;text-align:center;padding-inline:20px;pointer-events:none;font-family:var(--f-display);font-weight:600;font-size:clamp(26px,5vw,64px);letter-spacing:.02em;color:var(--fg);text-shadow:0 0 30px rgba(15,18,24,.9);opacity:0}
-.in-intro #introCap small{display:block;margin-top:14px;font:500 11px var(--f-mono);letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
-.in-intro #introCap.top{top:34svh}
-.in-intro #introCue{display:flex;position:absolute;left:50%;top:calc(100svh - 150px);transform:translateX(-50%);z-index:21;flex-direction:column;align-items:center;gap:10px;color:var(--muted);pointer-events:none;transition:opacity .4s}
-#introCue i{width:1px;height:38px;background:linear-gradient(var(--cyan),transparent);animation:drip 2s infinite;transform-origin:top}
-.in-intro #introSkip{display:inline-flex;position:absolute;left:50%;top:calc(100svh - 64px);white-space:nowrap;transform:translateX(-50%);z-index:22;font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:rgba(15,18,24,.6);border:1px solid var(--line-2);padding:10px 16px;cursor:pointer}
-#introSkip:hover,#introSkip:focus-visible{color:var(--cyan);border-color:var(--cyan)}
+
+/* ---------- mission dossier layout ---------- */
+.flow section{scroll-margin-top:72px}
+@media (min-width:1024px){.flow section{scroll-margin-top:8px}}
+.dossier{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:1fr}
+.idcol{padding-top:96px}
+.idin{display:grid;gap:28px}
+.idtop{display:grid;gap:14px;justify-items:start}
+.idcol h1{font-family:var(--f-display);font-stretch:100%;font-weight:700;text-transform:none;font-size:clamp(38px,4vw,58px);line-height:1.02;letter-spacing:-.035em;margin:10px 0 0}
+.role{margin:0;font-size:clamp(17px,1.45vw,20px);color:var(--fg);font-weight:500;letter-spacing:-.005em}
+.pitch{margin:0;color:var(--muted);font-size:16px;line-height:1.6;max-width:40ch}
+.facts{margin:6px 0 0;display:grid;gap:0;width:100%;max-width:420px;border-top:1px solid var(--line)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.08em}
+.facts dt{color:var(--dim);text-transform:uppercase}.facts dd{margin:0;color:var(--fg);text-align:right}
+.toc{display:none}
+.idbot{display:grid;gap:18px}
+.idbot .cta{margin:0}
+.soc{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:11px;letter-spacing:.12em}
+.soc a{color:var(--muted);text-decoration:none;transition:color .2s}.soc a:hover{color:var(--cyan)}
+.soc .tg{margin-left:auto}
+.flow{min-width:0;padding-top:40px}
+.flow .gut{padding-left:0;padding-right:0}
+.flow .wrap{max-width:none}
+.flow section.s{padding-block:clamp(72px,8vw,112px)}
+.flow .sh{grid-template-columns:1fr;gap:14px;margin-bottom:clamp(28px,3vw,44px);align-items:start}
+.flow .shl{gap:12px}
+.flow h2{font-size:clamp(28px,3vw,42px)}
+.flow .shr p{font-size:17px;max-width:56ch}
+.flow .about{grid-template-columns:1fr;gap:32px}
+.flow .lead{font-size:clamp(21px,2vw,27px);line-height:1.35}
+.flow .stats{margin-top:48px}
+.flow .stats div{padding:20px 14px 20px 0}
+.flow .stats b{font-size:clamp(26px,2.6vw,36px)}
+.flow .exp{grid-template-columns:1fr;gap:20px}
+.flow .exp ol{display:flex;flex-wrap:wrap;gap:8px;border:0}
+.flow .exp li button{display:flex;gap:8px;padding:9px 13px;border:1px solid var(--line-2);width:auto;transition:border-color .25s,background .25s}
+.flow .exp .a{display:none}
+.flow .exp .n{font-size:10px}
+.flow .exp .t{font-size:13px;font-family:var(--f-body);font-stretch:100%;font-weight:500;text-transform:none;letter-spacing:0}
+.flow .exp button[aria-selected="true"]{padding-left:13px;border-color:var(--cyan);background:rgba(92,207,232,.08)}
+.flow .panel{position:relative;top:0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);order:0}
+.flow .panel .viz{aspect-ratio:auto;min-height:100%}
+.flow .proj{grid-template-columns:1fr;gap:20px}
+.flow .p,.flow .p:nth-child(even),.flow .p:first-child{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:stretch;grid-column:auto}
+.flow .p .pv,.flow .p:first-child .pv{border:0;border-right:1px solid var(--line);aspect-ratio:auto;min-height:260px;height:100%}
+.flow .p .pi{padding:clamp(18px,2vw,26px)}
+.flow .p h3{font-size:clamp(20px,1.8vw,25px)}
+.flow .pi p{font-size:14.5px}
+.flow .p .pv img{object-position:left center}
+.flow .kpis div{padding:10px 12px 10px 0}
+.flow .kpis b{font-size:18px}
+.flow .tl::before{left:150px}
+.flow .contact{padding-block:clamp(72px,8vw,112px) 32px}
+.flow .contact h2{font-size:clamp(34px,4.4vw,64px);margin-top:16px}
+.flow .crow{grid-template-columns:1fr;margin-top:36px;gap:32px}
+.flow footer{margin-top:56px}
+.fig0{position:relative;margin:0;border:1px solid var(--line-2);background:#0C0F14;overflow:hidden;touch-action:pan-y;cursor:grab}
+.fig0.drag{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.fig0 .stage{position:relative;aspect-ratio:16/10}
+.fig0 #scene{position:absolute;inset:0;display:block;width:100%;height:100%}
+.fig0 .coords{top:14px;right:14px;font-size:10px;letter-spacing:.1em;color:var(--muted)}
+.fig0 .hud{position:absolute;left:12px;bottom:12px;z-index:3;padding:10px 14px 10px 10px;gap:4px 14px;background:rgba(15,18,24,.72)}
+.fig0 .hud canvas{width:78px;height:78px}
+.fig0 .hud div{font-size:9px}.fig0 .hud div b{font-size:11px}
+.fig0 figcaption{display:flex;justify-content:space-between;align-items:center;gap:8px 20px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--line);background:rgba(15,18,24,.6);font-size:10px;letter-spacing:.1em;color:var(--dim)}
+.fig0 figcaption .hint{margin:0;font-size:10px;display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted)}
+.fig0 .hint>span{display:inline-flex;align-items:center}
+.glance{border:1px solid var(--line);border-top:0}
+.glance .wrap>div{padding:22px 18px!important}
+.glance .wrap>div+div{padding-left:18px}
+.glance h3{font-size:16px}.glance p{font-size:14px}
+@media (min-width:1024px){
+  .nav{display:none}
+  .dossier{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(48px,6vw,104px);padding-inline:clamp(28px,4vw,56px)}
+  .idcol{position:sticky;top:0;height:100vh;height:100svh;padding-block:64px 40px}
+  .idin{height:100%;grid-template-rows:auto 1fr auto;gap:24px}
+  .toc{display:grid;align-content:center;gap:2px}
+  .toc a{display:flex;align-items:center;gap:14px;padding:7px 0;text-decoration:none;color:var(--dim);font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;transition:color .25s}
+  .toc a i{width:26px;height:1px;background:currentColor;transition:width .35s cubic-bezier(.2,.8,.2,1),background .25s}
+  .toc a b{font-weight:400;color:inherit;opacity:.7}
+  .toc a:hover,.toc a.act{color:var(--fg)}
+  .toc a.act i{width:60px;background:var(--cyan)}
+  .flow{padding-top:64px}
+  .tbtn{left:auto;right:max(16px,env(safe-area-inset-right,0px))}
+}
+@media (min-width:1024px) and (max-height:760px){.facts{display:none}.pitch{font-size:15px}}
+@media (max-width:1023px){.soc .tg{display:none}}
+@media (max-width:1180px){.glance .wrap{grid-template-columns:1fr}.glance .wrap>div,.glance .wrap>div+div{border-right:0;border-bottom:1px solid var(--line);padding:18px!important}.glance .wrap>div:last-child{border-bottom:0}}
+@media (max-width:700px){
+  .fig0 .stage{aspect-ratio:4/5}
+  .fig0 .hud{bottom:auto;top:12px;left:12px;grid-template-columns:auto;padding:8px}.fig0 .hud div{display:none}.fig0 .hud canvas{width:64px;height:64px}
+  .fig0 .coords{display:none}
+  .flow .panel{grid-template-columns:1fr}.flow .panel .viz{aspect-ratio:16/10}
+  .flow .p,.flow .p:nth-child(even),.flow .p:first-child{display:flex;flex-direction:column}
+  .flow .p .pv,.flow .p:first-child .pv{border-right:0;border-bottom:1px solid var(--line);aspect-ratio:16/9;min-height:0;height:auto}
+  .flow .tl::before{left:0}
+  .stats{grid-template-columns:1fr 1fr}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media (prefers-reduced-motion:reduce){#boot{display:none}.pv img{transform:none!important}}
 </style>
@@ -429,14 +529,6 @@ h2{text-transform:none;font-stretch:100%;font-weight:600;font-size:clamp(32px,4.
   <div class="bar"><i id="bootBar"></i></div>
 </div><span class="skip"><span lang="tr">GEÇMEK İÇİN TIKLA</span><span lang="en">CLICK TO SKIP</span></span></div>
 <div id="prog" aria-hidden="true"></div>
-<nav class="sidex" id="sidex" aria-label="Bölümler / Sections">
-  <a href="#top" data-s="top"><span>00 · <span lang="tr">GİRİŞ</span><span lang="en">INTRO</span></span><i></i></a>
-  <a href="#about" data-s="about"><span>01 · <span lang="tr">HAKKIMDA</span><span lang="en">ABOUT</span></span><i></i></a>
-  <a href="#expertise" data-s="expertise"><span>02 · <span lang="tr">UZMANLIK</span><span lang="en">EXPERTISE</span></span><i></i></a>
-  <a href="#work" data-s="work"><span>03 · <span lang="tr">PROJELER</span><span lang="en">WORK</span></span><i></i></a>
-  <a href="#journey" data-s="journey"><span>04 · <span lang="tr">YOLCULUK</span><span lang="en">JOURNEY</span></span><i></i></a>
-  <a href="#contact" data-s="contact"><span>05 · <span lang="tr">İLETİŞİM</span><span lang="en">CONTACT</span></span><i></i></a>
-</nav>
 <div class="cur" aria-hidden="true"></div><div class="cur-r" aria-hidden="true"></div>
 
 <a class="skipl" href="#about"><span lang="tr">İçeriğe geç</span><span lang="en">Skip to content</span></a>
@@ -457,63 +549,71 @@ h2{text-transform:none;font-stretch:100%;font-weight:600;font-size:clamp(32px,4.
       <a href="#journey"><span lang="tr">Yolculuk</span><span lang="en">Journey</span></a>
       <a href="#contact"><span lang="tr">İletişim</span><span lang="en">Contact</span></a>
     </nav>
-    <button class="tg" id="langBtn" type="button" aria-label="Dil / Language">EN</button>
+    <button class="tg langT" id="langBtn" type="button" aria-label="Dil / Language">EN</button>
     <button class="tg burger" id="menuBtn" type="button" aria-label="Menü / Menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i></button>
   </div>
 </header>
 
 <main id="top">
-<div id="introWrap">
-<section class="hero">
-  <canvas id="intro" aria-hidden="true"></canvas>
-  <div id="introCap" aria-hidden="true"></div>
-  <div id="introCue" class="mono" aria-hidden="true"><span lang="tr">Kaydır</span><span lang="en">Scroll</span><i></i></div>
-  <button id="introSkip" type="button"><span lang="tr">Girişi atla</span><span lang="en">Skip intro</span></button>
-  <canvas id="scene" aria-hidden="true"></canvas>
-  <div class="tags" id="tags" aria-hidden="true"></div>
-  <div class="veil" aria-hidden="true"></div>
+<div id="introLayer" aria-hidden="true">
+  <canvas id="intro"></canvas>
+  <div id="introCap"></div>
+  <div id="introCue" class="mono"><span lang="tr">Kaydır</span><span lang="en">Scroll</span><i></i></div>
+</div>
+<button id="introSkip" type="button"><span lang="tr">Girişi atla</span><span lang="en">Skip intro</span></button>
+<div id="introSpace" aria-hidden="true"></div>
+<div class="dossier">
+  <aside class="idcol" aria-label="Kimlik / Identity"><div class="idin">
+    <div class="idtop">
+      <span class="status mono"><b></b><span lang="tr">Savunma sanayii pozisyonlarına açık</span><span lang="en">Open to defense industry roles</span></span>
+      <h1>Mustafa Sabit Erol</h1>
+      <p class="role"><span lang="tr">Bilgisayar Mühendisi</span><span lang="en">Computer Engineer</span> <span class="cy">·</span> <span lang="tr">Otonom Sistemler &amp; Yazılım</span><span lang="en">Autonomous Systems &amp; Software</span></p>
+      <p class="pitch" lang="tr">ROS 2 ile görsel SLAM ve LiDAR algılama, Unity ile Google Play'de yayında iki oyun, ESP32 ile gömülü projeler. Gömülü yazılım, C++ ve görüntü işleme alanında çalışmak istiyorum.</p>
+      <p class="pitch" lang="en">Visual SLAM and LiDAR perception on ROS 2, two Unity games live on Google Play, embedded projects on ESP32. I want to work on embedded software, C++ and image processing.</p>
+      <dl class="facts mono">
+        <div><dt lang="tr">Mezuniyet</dt><dt lang="en">Graduated</dt><dd>KTO Karatay · 2026 · <span lang="tr">GNO</span><span lang="en">GPA</span> 3.41</dd></div>
+        <div><dt lang="tr">Konum</dt><dt lang="en">Location</dt><dd>Ankara · Konya · Niğde</dd></div>
+        <div><dt lang="tr">İngilizce</dt><dt lang="en">English</dt><dd>YÖKDİL 86.25</dd></div>
+      </dl>
+    </div>
+    <nav class="toc" id="toc" aria-label="Bölümler / Sections"><a href="#about" data-s="about"><i></i><b>01</b><span lang="tr">Hakkımda</span><span lang="en">About</span></a><a href="#expertise" data-s="expertise"><i></i><b>02</b><span lang="tr">Uzmanlık</span><span lang="en">Expertise</span></a><a href="#work" data-s="work"><i></i><b>03</b><span lang="tr">Projeler</span><span lang="en">Work</span></a><a href="#journey" data-s="journey"><i></i><b>04</b><span lang="tr">Yolculuk</span><span lang="en">Journey</span></a><a href="#contact" data-s="contact"><i></i><b>05</b><span lang="tr">İletişim</span><span lang="en">Contact</span></a></nav>
+    <div class="idbot">
+      <div class="cta">
+        <a class="btn pri mag" href="cv/Mustafa_Sabit_Erol_CV_TR.pdf" target="_blank" rel="noopener" lang="tr">CV indir · PDF</a>
+        <a class="btn pri mag" href="cv/Mustafa_Sabit_Erol_CV_EN.pdf" target="_blank" rel="noopener" lang="en">Résumé · PDF</a>
+        <a class="btn mag" href="mailto:mstfsbt.erol@gmail.com"><span lang="tr">E-posta gönder</span><span lang="en">Send an e-mail</span></a>
+      </div>
+      <div class="soc mono">
+        <a href="https://github.com/XankaiSofestai" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/mustafa-sabit-erol" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <button class="tg langT" type="button" aria-label="Dil / Language">EN</button>
+      </div>
+    </div>
+  </div></aside>
+  <div class="flow">
+    <figure class="fig0" id="scenePanel"><div class="stage">
+      <canvas id="scene" aria-hidden="true"></canvas>
+      <div class="tags" id="tags" aria-hidden="true"></div>
   <div class="coords mono" aria-hidden="true">
     <span>LIDAR · 360° · <span class="cy" id="ptCount">—</span> <span lang="tr">NOKTA</span><span lang="en">PTS</span></span>
     <span><span lang="tr">TARAMA</span><span lang="en">SCAN</span> <span class="cy" id="scanHz">10.00</span> HZ</span>
     <span>37.8746°N 32.4932°E</span>
   </div>
-  <div class="wrap gut">
-    <span class="status mono"><b></b><span lang="tr">Savunma sanayii pozisyonlarına açık · Türkiye</span><span lang="en">Open to defense industry roles · Türkiye</span></span>
-    <div class="h-name mono">Mustafa Sabit Erol — <span lang="tr">Bilgisayar Mühendisi / Otonom Sistemler &amp; Yazılım</span><span lang="en">Computer Engineer / Autonomous Systems &amp; Software</span></div>
-    <h1 lang="tr" aria-label="Geleceği tasarlamak."><span class="ln"><span>GELECEĞİ</span></span><span class="ln"><span><span class="out">TASARLAMAK</span><span class="dot">.</span></span></span></h1>
-    <h1 lang="en" aria-label="Engineering what's next."><span class="ln"><span>ENGINEERING</span></span><span class="ln"><span><span class="out">WHAT'S NEXT</span><span class="dot">.</span></span></span></h1>
-    <div class="h-sub">
-      <div>
-        <p lang="tr">Akıllı yazılımı, otonom sistemleri ve dijital dünyaları birbirine bağlıyorum. ROS 2 üzerinde görsel SLAM'den Unity ile gerçek zamanlı çok oyunculu oyunlara.</p>
-        <p lang="en">Bridging intelligent software, autonomous systems and digital worlds. From visual SLAM on ROS 2 to real-time multiplayer games in Unity.</p>
-        <div class="cta">
-          <a class="btn pri mag" href="#work"><span lang="tr">Projeleri keşfet</span><span lang="en">Explore work</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-          <a class="btn mag" href="cv/Mustafa_Sabit_Erol_CV_TR.pdf" target="_blank" rel="noopener" lang="tr">CV · PDF</a>
-          <a class="btn mag" href="cv/Mustafa_Sabit_Erol_CV_EN.pdf" target="_blank" rel="noopener" lang="en">CV · PDF</a>
-        </div>
-        <p class="hint mono" id="hint" aria-hidden="true"><span><i></i><span class="ms"><span lang="tr">Sürükle: sahneyi döndür</span><span lang="en">Drag: rotate the scene</span></span><span class="tch"><span lang="tr">Yana kaydır: sahneyi döndür</span><span lang="en">Swipe sideways: rotate</span></span></span><span><i></i><span class="ms"><span lang="tr">Tıkla: LiDAR taraması gönder</span><span lang="en">Click: fire a LiDAR scan</span></span><span class="tch"><span lang="tr">Dokun: LiDAR taraması gönder</span><span lang="en">Tap: fire a LiDAR scan</span></span></span></p>
-      </div>
-      <div class="hud">
+      <div class="hud" aria-hidden="true">
         <canvas id="adi" role="img" aria-label="Yapay ufuk / Attitude indicator" width="236" height="236"></canvas>
         <div><span lang="tr">YATIŞ</span><span lang="en">ROLL</span><b id="rRoll">+00.0°</b></div>
         <div><span lang="tr">YUNUSLAMA</span><span lang="en">PITCH</span><b id="rPitch">+00.0°</b></div>
         <div><span lang="tr">ROTA</span><span lang="en">HDG</span><b id="rHdg">000°</b></div>
         <div><span lang="tr">MOD</span><span lang="en">MODE</span><b class="cy"><span lang="tr">TARAMA</span><span lang="en">SCAN</span></b></div>
       </div>
-    </div>
-  </div>
-  <div class="scroll mono" aria-hidden="true"><span lang="tr">Keşfet</span><span lang="en">Scroll</span><i></i></div>
-</section>
-<div id="introSpace" aria-hidden="true"></div>
 </div>
-
+      <figcaption><span class="mono"><span lang="tr">ŞEK 0.0 · Tarayıcıda çalışan temsili LiDAR sahnesi</span><span lang="en">FIG 0.0 · Illustrative LiDAR scene running in the browser</span></span><p class="hint mono" id="hint" aria-hidden="true"><span><i></i><span class="ms"><span lang="tr">Sürükle: sahneyi döndür</span><span lang="en">Drag: rotate the scene</span></span><span class="tch"><span lang="tr">Yana kaydır: sahneyi döndür</span><span lang="en">Swipe sideways: rotate</span></span></span><span><i></i><span class="ms"><span lang="tr">Tıkla: LiDAR taraması gönder</span><span lang="en">Click: fire a LiDAR scan</span></span><span class="tch"><span lang="tr">Dokun: LiDAR taraması gönder</span><span lang="en">Tap: fire a LiDAR scan</span></span></span></p></figcaption>
+    </figure>
 <section class="glance gut" aria-label="Özet / Summary"><div class="wrap">
   <div><span class="mono"><span lang="tr">ŞEK</span><span lang="en">FIG</span> 0.1</span><h3 lang="tr">Otonom sistemler</h3><h3 lang="en">Autonomous systems</h3><p lang="tr">ROS 2 üzerinde iki kameralı görsel SLAM, LiDAR ile engel algılama ve Webots simülasyonu.</p><p lang="en">Stereo visual SLAM on ROS 2, LiDAR obstacle detection and Webots simulation.</p></div>
   <div><span class="mono"><span lang="tr">ŞEK</span><span lang="en">FIG</span> 0.2</span><h3 lang="tr">Oyun geliştirme</h3><h3 lang="en">Game development</h3><p lang="tr">Unity ile geliştirdiğim iki mobil oyun Google Play'de yayında. Biri sunucu otoriteli, gerçek zamanlı çok oyunculu.</p><p lang="en">Two Unity mobile games live on Google Play. One is server-authoritative, real-time multiplayer.</p></div>
   <div><span class="mono"><span lang="tr">ŞEK</span><span lang="en">FIG</span> 0.3</span><h3 lang="tr">Gömülü sistemler</h3><h3 lang="en">Embedded systems</h3><p lang="tr">ESP32 ile kızılötesi kumanda köprüsü ve MQTT ile kontrol edilen ESP8266 akıllı yemlik.</p><p lang="en">An ESP32 infrared remote bridge and an MQTT-controlled ESP8266 smart feeder.</p></div>
 </div></section>
-<div class="marq" aria-hidden="true"><div class="trk" id="marq"><span>ROS 2<b>/</b></span><span>ORB-SLAM2<b>/</b></span><span>RTAB-Map<b>/</b></span><span>LiDAR<b>/</b></span><span>Webots<b>/</b></span><span>Gazebo<b>/</b></span><span>Unity 6<b>/</b></span><span>C#<b>/</b></span><span>Photon Fusion 2<b>/</b></span><span>A*<b>/</b></span><span>ESP32<b>/</b></span><span>MQTT<b>/</b></span><span>Ubuntu<b>/</b></span><span>ROS 2<b>/</b></span><span>ORB-SLAM2<b>/</b></span><span>RTAB-Map<b>/</b></span><span>LiDAR<b>/</b></span><span>Webots<b>/</b></span><span>Gazebo<b>/</b></span><span>Unity 6<b>/</b></span><span>C#<b>/</b></span><span>Photon Fusion 2<b>/</b></span><span>A*<b>/</b></span><span>ESP32<b>/</b></span><span>MQTT<b>/</b></span><span>Ubuntu<b>/</b></span></div></div>
 <section class="s gut" id="about">
   <div class="wrap">
     <div class="sh"><div class="shl"><span class="mono">01 / <span lang="tr">Hakkımda</span><span lang="en">About</span></span><h2 lang="tr">Kodun ötesinde<span class="dot">.</span></h2><h2 lang="en">Beyond the code<span class="dot">.</span></h2></div></div>
@@ -572,7 +672,6 @@ h2{text-transform:none;font-stretch:100%;font-weight:600;font-size:clamp(32px,4.
 </section>
 
 <section class="contact gut" id="contact">
-  <div class="ring" aria-hidden="true"></div>
   <div class="wrap">
     <span class="mono">05 / <span lang="tr">İletişim</span><span lang="en">Contact</span></span>
     <h2 lang="tr">GELECEĞİ<br><span class="out">BİRLİKTE KURALIM</span><span class="dot">.</span></h2><h2 lang="en">LET'S BUILD<br><span class="out">WHAT'S NEXT</span><span class="dot">.</span></h2>
@@ -593,6 +692,8 @@ h2{text-transform:none;font-stretch:100%;font-weight:600;font-size:clamp(32px,4.
     <footer class="mono"><span>© 2026 Mustafa Sabit Erol</span><span>Konya · 37.87°N 32.49°E</span><span>Vanilla JS · Three.js</span></footer>
   </div>
 </section>
+  </div>
+</div>
 </main>
 
 <dialog id="dlg" aria-labelledby="dlgTitle">
@@ -823,11 +924,12 @@ function bindTilt(){ if(!fine||reduce)return;
 
 
 /* ---------- scroll-driven intro ---------- */
-const iw=document.getElementById('introWrap'),ic=document.getElementById('intro'),icap=document.getElementById('introCap'),icue=document.getElementById('introCue'),iskip=document.getElementById('introSkip');
-let introOn=!reduce&&!location.hash&&scrollY<4;try{if(sessionStorage.getItem('intro')==='1')introOn=false}catch(e){}
-const ih=document.querySelector('.hero'),introEnd=()=>introOn?iw.offsetHeight-ih.offsetHeight:0;
+const il=document.getElementById('introLayer'),isp=document.getElementById('introSpace'),ic=document.getElementById('intro'),icap=document.getElementById('introCap'),icue=document.getElementById('introCue'),iskip=document.getElementById('introSkip');
+let introOn=!reduce&&!location.hash&&scrollY<4,sceneHold=false;try{if(sessionStorage.getItem('intro')==='1')introOn=false}catch(e){}
+const introEnd=()=>introOn?Math.max(1,document.documentElement.scrollHeight-innerHeight):0;
 if(introOn){
-  document.body.classList.add('has-intro','in-intro');
+  try{history.scrollRestoration='manual'}catch(e){}
+  document.body.classList.add('has-intro','in-intro');sceneHold=true;
   const x=ic.getContext('2d'),DEPTH=64,PTS=[],RINGS=[];let W=0,H=0,ps=0,vel=0,raf=0,done=false;
   const small=innerWidth<700,per=small?22:30;
   for(let z=3;z<DEPTH;z+=2){RINGS.push(z);for(let i=0;i<per;i++)PTS.push({a:i/per*6.2832+z*.37+(Math.random()-.5)*.05,r:1+(Math.random()-.5)*.07,z:z+(Math.random()-.5)*.25,c:i%7===0?1:0})}
@@ -835,6 +937,8 @@ if(introOn){
   const size=()=>{const d=Math.min(devicePixelRatio||1,2),r=ic.getBoundingClientRect();W=r.width;H=r.height;ic.width=W*d;ic.height=H*d;x.setTransform(d,0,0,d,0,0)};
   const cl=(v,a,b)=>Math.max(0,Math.min(1,(v-a)/(b-a))),ez=t=>t*t*(3-2*t);
   const CAP=()=>L==='tr'?[['Algıla','Sensörden gelen ham veri'],['Haritala','Noktalardan dünyaya'],['Karar ver','Haritadan harekete']]:[['Sense','Raw data from the sensor'],['Map','From points to a world'],['Decide','From the map to motion']];
+  function finish(){if(done)return;done=true;cancelAnimationFrame(raf);removeEventListener('scroll',onS);document.body.classList.remove('has-intro','in-intro');sceneHold=false;il.remove();iskip.remove();isp.remove();root.style.scrollBehavior='auto';scrollTo(0,0);root.style.scrollBehavior='';try{sessionStorage.setItem('intro','1')}catch(e){};observe();fxBind()}
+  const onS=()=>{if(!raf&&!done)raf=requestAnimationFrame(draw)};
   function draw(){
     const p=Math.max(0,Math.min(1,scrollY/Math.max(1,introEnd())));vel+=((p-ps)*60-vel)*.2;ps+=(p-ps)*.14;if(Math.abs(p-ps)<.0004)ps=p;
     const U=Math.max(Math.min(W,H)*.62,Math.max(W,H)*.42),cx=W/2,cy=H/2,cz=ez(cl(ps,.1,.9))*(DEPTH-6),open=ez(cl(ps,0,.2)),roll=ps*1.4;
@@ -855,13 +959,13 @@ if(introOn){
     const c=CAP(),seg=ps<.24?-1:ps<.44?0:ps<.64?1:ps<.84?2:-1;
     if(seg>=0){const a0=.24+seg*.2,o=Math.min(cl(ps,a0,a0+.05),1-cl(ps,a0+.15,a0+.2));if(icap.dataset.s!==seg+L){icap.dataset.s=seg+L;icap.innerHTML=c[seg][0]+'<small>'+c[seg][1]+'</small>'}icap.style.opacity=o.toFixed(2);icap.classList.remove('top')}else if(ps<.1){if(icap.dataset.s!=='n'+L){icap.dataset.s='n'+L;icap.innerHTML='Mustafa Sabit Erol<small>'+(L==='tr'?'Bilgisayar Mühendisi · Portfolyo':'Computer Engineer · Portfolio')+'</small>'}icap.classList.add('top');icap.style.opacity=(1-cl(ps,.04,.1)).toFixed(2)}else icap.style.opacity=0;
     icue.style.opacity=ps<.06?1:0;
-    const inI=ps<.965;if(document.body.classList.contains('in-intro')!==inI){document.body.classList.toggle('in-intro',inI);if(!inI){try{sessionStorage.setItem('intro','1')}catch(e){}}}
-    ic.style.visibility=ps>=1?'hidden':'visible';
+    sceneHold=ps<.8;
+    if(p>=1&&ps>.995){raf=0;finish();return}
     raf=(p<1||ps<1)?requestAnimationFrame(draw):0;
   }
-  size();addEventListener('resize',()=>{size();if(!raf)raf=requestAnimationFrame(draw)});
-  addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(draw)},{passive:true});
-  iskip.addEventListener('click',()=>scrollTo({top:introEnd()+2,behavior:'smooth'}));
+  size();addEventListener('resize',()=>{if(done)return;size();if(!raf)raf=requestAnimationFrame(draw)});
+  addEventListener('scroll',onS,{passive:true});
+  iskip.addEventListener('click',()=>{il.classList.add('fade');sceneHold=false;setTimeout(finish,450)});
   raf=requestAnimationFrame(draw);
 }
 /* ---------- excitement layer: boot, scramble, progress, marquee, parallax, counters ---------- */
@@ -888,24 +992,22 @@ const fxIO='IntersectionObserver' in window?new IntersectionObserver(es=>es.forE
   if(t.matches('.contact h2'))scramble(t);else if(t.matches('.pv')){t.classList.add('scan');setTimeout(()=>t.classList.remove('scan'),1500)}else if(t.matches('.kpis b'))countUp(t);
   fxIO.unobserve(t)}),{threshold:.35}):null;
 function fxBind(){ if(!fxIO||reduce)return;document.querySelectorAll('h2:not([data-fx]),.pv:not([data-fx]),.kpis b:not([data-fx])').forEach(el=>{el.dataset.fx=1;fxIO.observe(el)});}
-const prog=document.getElementById('prog'),sidex=document.getElementById('sidex'),marq=document.getElementById('marq');
-const secs=['top','about','expertise','work','journey','contact'].map(id=>document.getElementById(id));
-const sideA=[...sidex.querySelectorAll('a')];
+const prog=document.getElementById('prog');
+const secs=['about','expertise','work','journey','contact'].map(id=>document.getElementById(id));
+const sideA=[...document.querySelectorAll('#toc a')];
 let mqx=0,vel=0,lastY=scrollY;
 (function tick(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
   prog.style.transform=`scaleX(${h>0?Math.min(1,y/h):0})`;
-  sidex.classList.toggle('on',y>innerHeight*.5);
   let act=0;secs.forEach((el,i)=>{if(el&&el.getBoundingClientRect().top<innerHeight*.45)act=i});if(y>=h-4)act=secs.length-1;
   sideA.forEach((a,i)=>a.classList.toggle('act',i===act));
   const d=y-lastY;lastY=y;vel+=(d-vel)*.12;
-  if(!reduce){mqx-=.55+Math.min(18,Math.abs(vel)*.3);const half=marq.scrollWidth/2;if(half>0&&-mqx>half)mqx+=half;
-    marq.style.transform=`translate3d(${mqx.toFixed(1)}px,0,0) skewX(${Math.max(-10,Math.min(10,-vel*.25)).toFixed(2)}deg)`;
+  if(!reduce){
     document.querySelectorAll('.pv').forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;el.style.setProperty('--py',(((r.top+r.height/2)-innerHeight/2)/innerHeight*-30).toFixed(1)+'px')});}
   requestAnimationFrame(tick)})();
 
-function setLang(l){L=l;app.dataset.lang=l;root.lang=l;document.getElementById('langBtn').textContent=l==='tr'?'EN':'TR';
+function setLang(l){L=l;app.dataset.lang=l;root.lang=l;document.querySelectorAll('.langT').forEach(b=>b.textContent=l==='tr'?'EN':'TR');
   try{localStorage.setItem('lang',l)}catch(e){} renderExp();renderProj();renderTL();fxBind();}
-document.getElementById('langBtn').addEventListener('click',()=>setLang(L==='tr'?'en':'tr'));
+document.querySelectorAll('.langT').forEach(b=>b.addEventListener('click',()=>setLang(L==='tr'?'en':'tr')));
 let saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
 const qLang=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();
 setLang(qLang==='en'||qLang==='tr'?qLang:saved==='en'||saved==='tr'?saved:/^tr/i.test(navigator.language||'tr')?'tr':'en');
@@ -992,7 +1094,7 @@ function tRun(raw){tPrint(raw,'c');const n=raw.trim().toLocaleLowerCase('tr').re
   else if(c==='projeler'||c==='projects'||c==='ls')tPrint(PROJ.map((p,i)=>`  ${i+1}. ${T(p.n)}`).join('\n')+(tr?'\nAçmak için: ac <no>':'\nTo open: open <n>'));
   else if(c==='ac'||c==='open'){const i=parseInt(a,10)-1;if(PROJ[i]){tPrint((tr?'Açılıyor: ':'Opening: ')+T(PROJ[i].n));closeTerm();openP(i)}else tPrint(tr?'Geçersiz numara. "projeler" yaz.':'Invalid number. Try "projects".','e')}
   else if(c==='oyna'||c==='play'){closeTerm();openGame()}
-  else if(c==='tara'||c==='scan'){if(firePulse){scrollTo({top:introEnd()+2,behavior:reduce?'auto':'smooth'});firePulse();tPrint(tr?'Tarama gönderildi.':'Scan fired.','k')}else tPrint(tr?'3B sahne bu cihazda kapalı.':'3D scene is off on this device.','e')}
+  else if(c==='tara'||c==='scan'){if(firePulse){heroEl.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});firePulse();tPrint(tr?'Tarama gönderildi.':'Scan fired.','k')}else tPrint(tr?'3B sahne bu cihazda kapalı.':'3D scene is off on this device.','e')}
   else if(c==='cv'||c==='ozgecmis'||c==='resume'){tPrint(tr?'Özgeçmiş yeni sekmede açılıyor.':'Opening the résumé in a new tab.');window.open(tr?'cv/Mustafa_Sabit_Erol_CV_TR.pdf':'cv/Mustafa_Sabit_Erol_CV_EN.pdf','_blank','noopener')}
   else if(c==='iletisim'||c==='contact')tPrint('mstfsbt.erol@gmail.com\nlinkedin.com/in/mustafa-sabit-erol\ngithub.com/XankaiSofestai');
   else if(c==='git'||c==='goto'||c==='cd'){const id=SEC[a];if(id){closeTerm();document.getElementById(id).scrollIntoView({behavior:reduce?'auto':'smooth'})}else tPrint(tr?'Bölüm bulunamadı.':'No such section.','e')}
@@ -1082,7 +1184,7 @@ const orbit=new THREE.Group();scene.add(orbit);const sats=[];
   const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:c,transparent:true,opacity:o}));l.rotation.x=tilt;l.rotation.z=i?.4:-.2;orbit.add(l);
   const sat=new THREE.Mesh(new THREE.SphereGeometry(.13,8,8),new THREE.MeshBasicMaterial({color:i?0x7A6BFF:0x00D9FF}));l.add(sat);sats.push({sat,r,sp:i?.21:.32});});
 const ring2=new THREE.Mesh(new THREE.RingGeometry(0.96,1,96),new THREE.MeshBasicMaterial({color:0xF2F6FA,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));ring2.rotation.x=-Math.PI/2;world.add(ring2);
-const heroEl=document.querySelector('.hero'),hintEl=document.getElementById('hint'),ray=new THREE.Raycaster(),gPlane=new THREE.Plane(new THREE.Vector3(0,1,0),1),hitP=new THREE.Vector3(),tgt=new THREE.Vector3(0,-99,0);
+const heroEl=document.getElementById('scenePanel'),hintEl=document.getElementById('hint'),ray=new THREE.Raycaster(),gPlane=new THREE.Plane(new THREE.Vector3(0,1,0),1),hitP=new THREE.Vector3(),tgt=new THREE.Vector3(0,-99,0);
 let yawOff=0,yawVel=0,drag=null,pulseT=-1e9,tgtN=0;
 function pulseAt(lx,lz){mat.uniforms.uP.value.set(lx,0,lz);ring2.position.set(lx,hgt(lx,lz)+.12,lz);tgt.set(lx,hgt(lx,lz)+1.1,lz);tgtN++;pulseT=performance.now();hintEl.classList.add('used')}
 firePulse=()=>pulseAt((Math.random()-.5)*14,(Math.random()-.5)*10);
@@ -1092,19 +1194,18 @@ addEventListener('pointerup',e=>{if(!drag)return;const click=drag.m<=6;drag=null
   const r=cv.getBoundingClientRect();ray.setFromCamera({x:(e.clientX-r.left)/r.width*2-1,y:-((e.clientY-r.top)/r.height)*2+1},cam);
   if(ray.ray.intersectPlane(gPlane,hitP)){world.worldToLocal(hitP);if(Math.abs(hitP.x)<17&&Math.abs(hitP.z)<17)pulseAt(hitP.x,hitP.z)}});
 addEventListener('pointercancel',()=>{drag=null;heroEl.classList.remove('drag')});
-const h1El=document.querySelector('.hero h1');
 const TAGS=OB.slice(0,3).map(([x,z,w,d,h],i)=>({id:()=>(L==='tr'?'NESNE-0':'OBJ-0')+(i+1),p:new THREE.Vector3(x,hgt(x,z)+h+.3,z)}));
 TAGS.push({id:()=>L==='tr'?'İKA-01':'UGV-01',p:new THREE.Vector3(),veh:true});
 TAGS.push({id:()=>(L==='tr'?'HEDEF-':'TARGET-')+String(tgtN).padStart(2,'0'),p:tgt,pt:true});
 TAGS.forEach(t=>{t.el=document.createElement('div');t.el.className='tag';t.lbl=document.createElement('span');t.el.appendChild(t.lbl);tagsEl.appendChild(t.el)});
 function size(){const r=cv.getBoundingClientRect();if(!r.width)return;renderer.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;
-  if(r.width>900)cam.setViewOffset(r.width,r.height,-r.width*.17,0,r.width,r.height);else cam.setViewOffset(r.width,r.height,0,-r.height*.14,r.width,r.height);cam.updateProjectionMatrix()}
+  cam.setViewOffset(r.width,r.height,0,-r.height*.04,r.width,r.height);cam.updateProjectionMatrix()}
 size();addEventListener('resize',size);
 let visible=true;if('IntersectionObserver' in window)new IntersectionObserver(e=>{visible=e[0].isIntersecting}).observe(cv);
 const v3=new THREE.Vector3();let lastT=-1e9;
 function frame(t){
   t=t||0;if(!reduce)requestAnimationFrame(frame);
-  if(!visible)return;
+  if(!visible||sceneHold)return;
   const s=t/1000,u=(s*.022)%1;attitude(t);
   const vp=curve.getPointAt(u),vn=curve.getTangentAt(u);
   veh.position.copy(vp);veh.rotation.y=s*1.6;
@@ -1113,14 +1214,14 @@ function frame(t){
   if(!drag){yawOff+=yawVel;yawVel*=.94}const pr=(t-pulseT)/1000*10;mat.uniforms.uPr.value=pr;mat.uniforms.uPa.value=Math.max(0,1-pr/16);ring2.scale.setScalar(Math.max(pr,.01));ring2.material.opacity=.8*Math.max(0,1-pr/16);
   world.rotation.y=s*.05+nx*.15+yawOff;world.rotation.z=-roll*Math.PI/180*.25;world.rotation.x=pitch*Math.PI/180*.25;
   orbit.rotation.y=-s*.03;sats.forEach(o=>{const a=s*o.sp;o.sat.position.set(Math.cos(a)*o.r,0,Math.sin(a)*o.r)});
-  const camR=small?31:26;cam.position.set(Math.sin(.6)*camR,11.5-ny*1.5,Math.cos(.6)*camR);cam.lookAt(0,-1,0);
+  const camR=small?27:24;cam.position.set(Math.sin(.6)*camR,11.5-ny*1.5,Math.cos(.6)*camR);cam.lookAt(0,-1,0);
   renderer.render(scene,cam);drawADI();
   if(t-lastT>90){lastT=t;
     const hd=((Math.atan2(vn.x,vn.z)+world.rotation.y)*180/Math.PI%360+360)%360;readouts(hd);
     document.getElementById('scanHz').textContent=(10+Math.sin(s)*.04).toFixed(2);
-    const r=cv.getBoundingClientRect(),h1R=h1El.getBoundingClientRect();
+    const r=cv.getBoundingClientRect();
     TAGS.forEach(tg=>{if(tg.veh)tg.p.set(vp.x,vp.y+.7,vp.z);v3.copy(tg.p);world.localToWorld(v3);v3.project(cam);
-      const x=(v3.x*.5+.5)*r.width,y=(-v3.y*.5+.5)*r.height,ok=!(tg.pt&&!tgtN)&&v3.z<1&&x>40&&!(r.width>900&&x<h1R.right-r.left+24&&y>h1R.top-r.top-40)&&x<r.width-40&&y>90&&y<r.height-40;
+      const x=(v3.x*.5+.5)*r.width,y=(-v3.y*.5+.5)*r.height,ok=!(tg.pt&&!tgtN)&&v3.z<1&&x>30&&x<r.width-30&&y>(r.width>520?70:40)&&y<r.height-(r.width>520?30:100);
       tg.el.style.display=ok?'block':'none';tg.el.style.transform=`translate(${x}px,${y}px)`;
       tg.lbl.textContent=tg.pt?`${tg.id()} · ${tg.p.x.toFixed(1)}, ${tg.p.z.toFixed(1)}`:tg.veh?`${tg.id()} · ${vp.x.toFixed(1)}, ${vp.z.toFixed(1)}`:`${tg.id()} · ${Math.hypot(tg.p.x-vp.x,tg.p.z-vp.z).toFixed(1)} m`;});}
 }
